@@ -84,10 +84,10 @@ This repository contains the daily challenges and projects completed as part of 
 ```
 .
 ├── code/
-│   ├── lessons_21-40.ipynb
+│   ├── lessons_4-20.ipynb
 │   └── ...
 ├── data/
-│   └── audio files
+│   └── data files
 ├── .env
 ├── requirements.txt
 └── README.md
