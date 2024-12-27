@@ -1,3 +1,13 @@
+# Core dependencies
 pygame
 python-dotenv
 pynput
+
+# Optional but recommended
+colorama  # For better color support across platforms
+
+# Built-in modules used
+# random  - For random number generation
+# os      - For screen clearing and file operations
+# time    - For delays and timing
+# sys     - For system operations

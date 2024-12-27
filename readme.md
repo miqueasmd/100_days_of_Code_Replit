@@ -19,10 +19,21 @@ This repository contains the daily challenges and projects completed as part of 
 - Quiz and educational tools
 - Time and date handling
 - Mathematical calculations
+- Contact management with dictionaries
+- Website rating and review systems
+- Custom monster creation (MokeBeast)
+- Bingo card generation and gameplay
+- Task management with priorities
+- To-do list organization
+- Data validation and formatting
+- Multi-option menu systems
+- File-based data persistence
+- Top Trumps game mechanics
+- High score management
 
 ## Challenges Completed
 
-| Day + Name | Description |
+| Day + Challenge Name | Description |
 |------------|-------------|
 | Day 4: Color Text | Learned how to add colored text output using ANSI color codes and created examples with different colors. |
 | Day 5: Which Character Are You? | Created an Avengers character quiz that determines which character you are based on yes/no questions. |
@@ -60,6 +71,16 @@ This repository contains the daily challenges and projects completed as part of 
 | Day 37: Star Wars Name Generator | Built a program that generates Star Wars names based on user input using string manipulation. |
 | Day 38: Rainbow Text Generator | Created a program that changes text colors based on specific letters using ANSI color codes. |
 | Day 39: Hangman Game | Implemented the classic Hangman game with lives system, word guessing, and letter tracking. |
+| Day 40: Contact Card | Created a contact card system using dictionaries to store and display personal information. |
+| Day 41: Website Rating | Built a website rating system that stores and displays website information with star ratings. |
+| Day 42: MokeBeast | Created a monster collection game with color-coded types and stats using dictionaries. |
+| Day 43: Bingo Card Generator | Developed a random bingo card generator with proper number distribution and formatting. |
+| Day 44: Bingo Game | Enhanced the bingo card generator with gameplay mechanics and win condition checking. |
+| Day 45: To Do List Manager | Built an advanced to-do list with priority levels, due dates, and multiple viewing options. |
+| Day 46: Mokédex | Built a full Mokébeast collection system that stores multiple beasts with their details (name, type, special move, HP, MP) using a 2D dictionary, with color-coded output based on beast type. |
+| Day 47: Top Trumps | Created a Top Trumps card game where players compare character stats (Intelligence, Speed, Guile, etc.) using dictionaries to store character information. |
+| Day 48: High Score Table | Developed a high score system that saves player initials and scores to a file, with ability to add new scores and display the table. |
+| Day 49: High Score Analysis | Enhanced the high score system to analyze and display the highest scoring player from the saved data. |
 
 ## How to Run the Code
 
