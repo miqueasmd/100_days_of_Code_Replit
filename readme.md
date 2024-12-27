@@ -2,50 +2,96 @@
 
 This repository contains the daily challenges and projects completed as part of the 100 Days of Code challenge on Replit.
 
+## Features
+
+- Interactive command-line games and quizzes
+- Text-based user interfaces with color support
+- String manipulation and text formatting
+- File handling and data persistence
+- Random number generation and game logic
+- Input validation and error handling
+- Score tracking and statistics
+- Audio playback (Music Player)
+- Password-based authentication
+- Data structures (lists, dictionaries)
+- Character generation systems
+- Color text and rainbow effects
+- Quiz and educational tools
+- Time and date handling
+- Mathematical calculations
+
 ## Challenges Completed
 
 | Day + Name | Description |
 |------------|-------------|
-| Day 4: Extend Your Bill Calculator | Added a tip function to a bill calculator and split the total bill among multiple people. |
-| Day 5: How Many Seconds Are in a Year? | Calculated the number of seconds in a year, including leap years, using a while loop and if statements. |
-| Day 6: Fix the Code | Debugged and fixed a code snippet with multiple errors. |
-| Day 7: Grade Generator | Created a program to calculate the user's grade based on their test scores and display the letter grade. |
-| Day 8: 2 Player Rock, Paper, Scissors | Built a two-player Rock, Paper, Scissors game with input validation and score tracking. |
-| Day 9: Animal Sound Generator | Created a program that loops and asks the user for an animal sound, then displays the corresponding sound. |
-| Day 10: Guess the Number Game | Built a number guessing game where the user guesses a number between 1 and 1,000,000 with feedback on each guess. |
-| Day 11: Loan Calculator | Created a loan calculator to determine the total amount owed for a loan with a 5% APR over 10 years. |
-| Day 12: List Generator | Built a program that generates a list of numbers based on user input for the starting number, ending number, and increment. |
-| Day 13: Name the Lyrics Game | Created a game where the user guesses missing words from song lyrics. |
-| Day 14: Enhanced Rock, Paper, Scissors Game | Enhanced the Rock, Paper, Scissors game to include multiple rounds and score tracking. |
-| Day 15: Animal Sound Generator with Exit Option | Enhanced the animal sound generator to include an option to exit the loop. |
-| Day 16: Name the Lyrics Game with Attempts | Enhanced the lyrics guessing game to count the number of attempts it takes for the user to guess correctly. |
-| Day 17: Enhanced Rock, Paper, Scissors Game with Score Tracking | Further enhanced the Rock, Paper, Scissors game to track scores and end the game when a player wins three rounds. |
-| Day 21: To Do List Manager | Created a basic to do list manager with options to view, add, and remove items. |
-| Day 22: Enhanced To Do List Manager | Enhanced the to do list manager to include editing items and preventing duplicates. |
-| Day 23: Random Greeting Generator | Built a program that generates a random greeting from a list of greetings in different languages. |
-| Day 24: Hangman Game | Created a hangman game where the user guesses letters to reveal a hidden word. |
-| Day 25: Enhanced Hangman Game | Enhanced the hangman game to include a graphical representation of the hangman. |
-| Day 26: Star Wars Name Generator | Built a program that generates a Star Wars name based on user input. |
-| Day 27: Colorful Text Printer | Created a subroutine to print text in different colors. |
-| Day 28: Enhanced Colorful Text Printer | Enhanced the colorful text printer to include more colors and better formatting. |
-| Day 29: Rainbow Text Printer | Built a program that prints text in rainbow colors. |
-| Day 30: Enhanced Rainbow Text Printer | Enhanced the rainbow text printer to include more colors and better formatting. |
+| Day 4: Color Text | Learned how to add colored text output using ANSI color codes and created examples with different colors. |
+| Day 5: Which Character Are You? | Created an Avengers character quiz that determines which character you are based on yes/no questions. |
+| Day 6: Secure Login | Built a login system that gives personalized greetings to three different users with username/password verification. |
+| Day 7: Fake Fan Question Generator | Created a "Big Bang Theory" fan quiz that asks follow-up questions to determine if someone is a true fan. |
+| Day 8: Affirmations Generator | Built a daily affirmation generator that provides custom messages based on name and day of the week. |
+| Day 9: Generation Generator | Created a program that determines which generation someone belongs to based on their birth year. |
+| Day 10: Bill Calculator with Tips | Enhanced a bill calculator to include tip calculations and split bills among multiple people. |
+| Day 11: Seconds Calculator | Built a program to calculate the number of seconds in a year, including handling leap years. |
+| Day 12: Debug Challenge | Fixed a broken quiz program by correcting syntax errors and logical issues. |
+| Day 13: Grade Calculator | Created a program that calculates percentage grades and assigns letter grades based on test scores. |
+| Day 14: Rock, Paper, Scissors | Created a basic version of Rock, Paper, Scissors game with player vs player gameplay. |
+| Day 15: Animal Sound Generator | Built a program that generates animal sounds with an option to exit the loop. |
+| Day 16: Name the Lyrics | Created a lyrics guessing game that counts attempts until correct guess. |
+| Day 17: Epic Rock, Paper, Scissors | Enhanced Rock, Paper, Scissors with score tracking and first-to-three wins system using getpass for secret moves. |
+| Day 18: Guess the Number | Built a number guessing game with attempt counting and input validation for numbers between 1 and 1,000,000. |
+| Day 19: Loan Calculator | Created a loan calculator that shows 10-year loan growth with 5% APR on a $1,000 initial amount. |
+| Day 20: List Generator | Built a program that generates number sequences based on user-defined start, end, and increment values. |
+| Day 21: Math Facts Game | Created an interactive multiplication quiz that tests users on their math facts, tracks scores, and awards emojis for perfect scores. |
+| Day 22: Random Number Guessing Game | Enhanced the number guessing game to use a random number between 1 and 1,000,000 with attempt tracking. |
+| Day 23: Login System | Built a login system with username/password verification that loops until correct credentials are entered. |
+| Day 24: Infinity Dice | Created a dice rolling game with customizable sides and replay option, using random number generation. |
+| Day 25: Character Stats Generator | Developed a RPG character generator that calculates health and strength stats using different dice rolls. |
+| Day 26: Music Player | Built a simple music player interface with play/pause functionality using pygame mixer. |
+| Day 27: Character Builder | Created a character generator with name, type, health, and strength attributes using dice rolls for stats. |
+| Day 28: Enhanced Colorful Text | Created a program that prints text in different colors using ANSI color codes and formatting. |
+| Day 29: Rainbow Text | Built a program that prints text in rainbow colors using color cycling. |
+| Day 30: Enhanced Rainbow Text | Enhanced the rainbow text printer with more colors and improved formatting options. |
 | Day 31: Classic User Interface | Created a classic user interface using string manipulation and f-strings. |
-| Day 32: Random Greeting Generator | Built a program that generates a random greeting from a list of greetings in different languages. |
-| Day 33: To Do List Manager with Edit and Remove | Enhanced the to do list manager to include editing items and confirming removal. |
-| Day 34: Email Spammer | Built a program that sends spam emails to a list of email addresses. |
-| Day 35: Enhanced To Do List Manager | Further enhanced the to do list manager to include erasing the entire list and preventing duplicates. |
-| Day 36: Enhanced Email Spammer | Enhanced the email spammer to include more customization options. |
-| Day 37: Star Wars Name Generator with More Options | Enhanced the Star Wars name generator to include more customization options. |
-| Day 38: Code the Rainbow | Built a program that prints text in rainbow colors based on user input. |
-| Day 39: Hangman Game with ASCII Art | Enhanced the hangman game to include ASCII art representation of the hangman. |
-
+| Day 32: Random Greeting Generator | Built a program that generates random greetings from different languages. |
+| Day 33: To Do List Manager | Created a to-do list manager with options to view, add, edit, and remove items. |
+| Day 34: Email Spammer | Built a program that sends customized spam messages to a list of email addresses. |
+| Day 35: Enhanced To Do List | Enhanced the to-do list manager with duplicate prevention, item editing, removal confirmation, and list erasing. |
+| Day 36: Name Rolodex | Created a name management system that stores capitalized first and last names while preventing duplicates. |
+| Day 37: Star Wars Name Generator | Built a program that generates Star Wars names based on user input using string manipulation. |
+| Day 38: Rainbow Text Generator | Created a program that changes text colors based on specific letters using ANSI color codes. |
+| Day 39: Hangman Game | Implemented the classic Hangman game with lives system, word guessing, and letter tracking. |
 
 ## How to Run the Code
 
-1. Clone the repository to your local machine.
-2. Navigate to the directory containing the challenge files.
-3. Run the Python scripts using your preferred Python interpreter.
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   ```
+
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Set up environment variables:
+   - Create a `.env` file in the root directory
+   - Add necessary paths and configurations
+
+4. Run the Python scripts using your preferred Python interpreter.
+
+## Project Structure
+
+```
+.
+├── code/
+│   ├── lessons_21-40.ipynb
+│   └── ...
+├── data/
+│   └── audio files
+├── .env
+├── requirements.txt
+└── README.md
+```
 
 ## Future Updates
 
