@@ -4,32 +4,51 @@ This repository contains the daily challenges and projects completed as part of 
 
 ## Features
 
+Game Development
 - Interactive command-line games and quizzes
-- Text-based user interfaces with color support
-- String manipulation and text formatting
-- File handling and data persistence
 - Random number generation and game logic
-- Input validation and error handling
 - Score tracking and statistics
-- Audio playback (Music Player)
-- Password-based authentication
-- Data structures (lists, dictionaries)
-- Character generation systems
-- Color text and rainbow effects
-- Quiz and educational tools
-- Time and date handling
-- Mathematical calculations
-- Contact management with dictionaries
-- Website rating and review systems
-- Custom monster creation (MokeBeast)
-- Bingo card generation and gameplay
-- Task management with priorities
-- To-do list organization
-- Data validation and formatting
-- Multi-option menu systems
-- File-based data persistence
 - Top Trumps game mechanics
-- High score management
+- Bingo card generation and gameplay
+- Custom monster creation (MokeBeast)
+- Character generation systems
+
+User Interface
+- Text-based user interfaces with color support
+- Color text and rainbow effects
+- Multi-option menu systems
+- Input validation and error handling
+
+Data Management
+- File handling and data persistence
+- Auto-save and auto-load functionality
+- CSV file handling
+- Backup systems
+- File organization
+- Data structures (lists, dictionaries)
+
+Tools and Utilities
+- String manipulation and text formatting
+- Mathematical calculations
+- Time and date handling
+- Debugging tools
+- Password-based authentication
+- Audio playback (Music Player)
+
+Applications
+- Task management and to-do lists
+- Contact management systems
+- Website rating and review systems
+- Inventory management
+- Pizza order management
+- Price calculation systems
+- Idea storage and retrieval
+
+Programming Concepts
+- Recursive functions
+- Palindrome checking
+- Factorial calculations
+- Data validation and formatting
 
 ## Challenges Completed
 
@@ -81,6 +100,16 @@ This repository contains the daily challenges and projects completed as part of 
 | Day 47: Top Trumps | Created a Top Trumps card game where players compare character stats (Intelligence, Speed, Guile, etc.) using dictionaries to store character information. |
 | Day 48: High Score Table | Developed a high score system that saves player initials and scores to a file, with ability to add new scores and display the table. |
 | Day 49: High Score Analysis | Enhanced the high score system to analyze and display the highest scoring player from the saved data. |
+| Day 50: Idea Storage | Built an idea storage system that allows adding new ideas and retrieving random ones from a persistent file. |
+| Day 51: Auto-Save To Do List | Enhanced the to-do list with auto-save and auto-load functionality for persistent data storage. |
+| Day 52: Pizza Price Calculator | Created a pizza shop system that calculates order costs based on quantity and size, storing customer details in a 2D list. |
+| Day 53: RPG Inventory | Created a video game inventory system with add, view, and remove functionality, using auto-save and auto-load features. |
+| Day 54: Shop $$ Tracker | Built a program that reads a CSV file to calculate daily shop earnings by multiplying cost and quantity. |
+| Day 55: Backup Manager | Enhanced the to-do list with automatic backup functionality, creating random filenames in a backup folder. |
+| Day 56: File Organizer | Created a program that reads music streaming data and organizes songs into folders by artist. |
+| Day 57: Factorial Calculator | Built a recursive function to calculate factorials of numbers. |
+| Day 58: Debug Challenge | Used the debugger to fix a broken number guessing game with multiple issues. |
+| Day 59: Palindrome Checker | Created a program that checks if a word is a palindrome using recursion and string manipulation. |
 
 ## How to Run the Code
 
