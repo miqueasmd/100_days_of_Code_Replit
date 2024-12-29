@@ -12,12 +12,16 @@ Game Development
 - Bingo card generation and gameplay
 - Custom monster creation (MokeBeast)
 - Character generation systems
+- Visual novel engine
+- Guess Who game implementation
 
 User Interface
 - Text-based user interfaces with color support
 - Color text and rainbow effects
 - Multi-option menu systems
 - Input validation and error handling
+- GUI development with tkinter
+- Event-driven programming
 
 Data Management
 - File handling and data persistence
@@ -26,29 +30,17 @@ Data Management
 - Backup systems
 - File organization
 - Data structures (lists, dictionaries)
+- Database operations with shelve
 
-Tools and Utilities
+Tools and Applications
 - String manipulation and text formatting
-- Mathematical calculations
+- Mathematical calculations and calculator GUI
 - Time and date handling
-- Debugging tools
+- Event countdown system
 - Password-based authentication
-- Audio playback (Music Player)
-
-Applications
-- Task management and to-do lists
-- Contact management systems
-- Website rating and review systems
-- Inventory management
-- Pizza order management
-- Price calculation systems
-- Idea storage and retrieval
-
-Programming Concepts
-- Recursive functions
-- Palindrome checking
-- Factorial calculations
-- Data validation and formatting
+- Social media simulation (Twitter clone)
+- Private diary system
+- Code utilities library
 
 ## Challenges Completed
 
@@ -110,6 +102,16 @@ Programming Concepts
 | Day 57: Factorial Calculator | Built a recursive function to calculate factorials of numbers. |
 | Day 58: Debug Challenge | Used the debugger to fix a broken number guessing game with multiple issues. |
 | Day 59: Palindrome Checker | Created a program that checks if a word is a palindrome using recursion and string manipulation. |
+| Day 60: Event Countdown | Built an event countdown timer that calculates days until/since events with emoji feedback |
+| Day 61: Personal Twitter | Created a single-user Twitter clone with timestamp-based storage and chronological viewing |
+| Day 62: Secret Diary | Developed a password-protected diary system with entry storage and viewing |
+| Day 63: Own Library | Created a personal library of reusable functions and utilities |
+| Day 64: Jobs OOP | Created a class hierarchy for different jobs using Object-Oriented Programming |
+| Day 65: Character Classes | Built an RPG character system with classes for Player, Vampire, and Orc |
+| Day 66: Calculator | Created a GUI calculator using tkinter |
+| Day 67: Guess Who | Created a GUI-based Guess Who game using tkinter and image loading |
+| Day 68: Guess Who 2.0 | Added error handling and UI improvements to Guess Who |
+| Day 69: Visual Novel | Created a visual novel game with branching storylines using the Guess Who images |
 
 ## How to Run the Code
 

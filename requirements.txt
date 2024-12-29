@@ -3,12 +3,17 @@ python-dotenv # For environment variables
 pygame # For music player functionality
 pynput # For keyboard input handling
 csv # Built-in, for CSV file operations
+pillow # For image processing
 
 # Optional but recommended
 colorama  # For better color support across platforms
 
 # Built-in modules used
-# random  - For random number generation
-# os      - For screen clearing and file operations
-# time    - For delays and timing
-# sys     - For system operations
+# datetime  - For date and time operations
+# tkinter   - For GUI development
+# shelve    - For simple database operations
+# os        - For file and system operations
+# time      - For delays and timing
+# csv       - For CSV file operations
+# random    - For random number generation
+# sys       - For system operations
