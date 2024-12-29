@@ -17,3 +17,5 @@ colorama  # For better color support across platforms
 # csv       - For CSV file operations
 # random    - For random number generation
 # sys       - For system operations
+# hashlib   - For hashing operations
+# hmac      - For keyed-hashing for message authentication

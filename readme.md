@@ -151,6 +151,14 @@ We will continue updating this readme file as we complete more challenges and pr
 
 Stay tuned for more exciting projects and challenges!
 
+## Security Setup
+
+1. Add your secure credentials to `.env`
+2. Never commit `.env` file
+3. Never share your credentials
+4. Use strong passwords
+5. Change credentials regularly
+
 ## ☕ Support Me
 
 If you like my work, consider supporting my studies!
