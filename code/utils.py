@@ -2,12 +2,17 @@ import os
 import time
 import random
 import datetime
+import hashlib
+import colorama
 from colorama import Fore, Back, Style
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
 load_dotenv()
 data_path = os.getenv('DATA_PATH')
+
+# Initialize colorama
+colorama.init(autoreset=True)
 
 def clear_console():
     """Clear the console screen."""
@@ -111,3 +116,6 @@ def generate_random_insult():
         "You're not stupid; you just have bad luck thinking."
     ]
     return random.choice(insults)
+
+def hash_password(password, salt):
+    return hashlib.sha256(f"{password}{salt}".encode()).hexdigest()

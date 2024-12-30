@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="icon" type="image/x-icon" href="/static/images/favicon/favicon.ico">
+    <link href="/static/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>{{ title }}</h1>
+        <h2 class="date">{{ date }}</h2>
+    </header>
+    
+    <main class="blog-post">
+        <article>
+            <div class="content">
+                <p>{{ text }}</p>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <nav class="blog-nav">
+            <a href="/portfolio" class="link-button">Portfolio</a>
+            <a href="/linktree" class="link-button">My Linktree</a>
+        </nav>
+
+        <section class="support">
+            <h2><a href="https://ko-fi.com/miqueasmd" target="_blank">&#9749; Support Me</a></h2>
+            <p>If you like my work, consider supporting my studies!</p>
+            <a href="https://ko-fi.com/miqueasmd" class="ko-fi" target="_blank">
+                <img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Support me on Ko-fi"> <!-- Ko-fi support button -->
+            </a>
+        </section>
+    </footer>
+
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

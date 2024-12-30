@@ -22,6 +22,9 @@ User Interface
 - Input validation and error handling
 - GUI development with tkinter
 - Event-driven programming
+- HTML and CSS responsive design
+- Flask web interface
+- Dynamic content routing
 
 Data Management
 - File handling and data persistence
@@ -31,6 +34,9 @@ Data Management
 - File organization
 - Data structures (lists, dictionaries)
 - Database operations with shelve
+- Password hashing and salting
+- User authentication systems
+- Multi-user login handling
 
 Tools and Applications
 - String manipulation and text formatting
@@ -41,6 +47,21 @@ Tools and Applications
 - Social media simulation (Twitter clone)
 - Private diary system
 - Code utilities library
+- Portfolio website
+- Link tree page
+- Blog system with templates
+- Reflection system
+- Dynamic URL routing
+
+Web Development
+- HTML5 and CSS3
+- Flask web framework
+- Template systems
+- Static file serving
+- Dynamic route handling
+- User session management
+- Responsive web design
+- Dark theme implementation
 
 ## Challenges Completed
 
@@ -112,6 +133,15 @@ Tools and Applications
 | Day 67: Guess Who | Created a GUI-based Guess Who game using tkinter and image loading |
 | Day 68: Guess Who 2.0 | Added error handling and UI improvements to Guess Who |
 | Day 69: Visual Novel | Created a visual novel game with branching storylines using the Guess Who images |
+| Day 70: Login System | Built a dual-user login system with admin and normal user authentication |
+| Day 71: Hashed Login | Created multi-user login system with salt and hash password protection |
+| Day 72: HTML Basics | Introduction to HTML fundamentals and basic webpage structure |
+| Day 73: HTML & CSS | Created basic webpage with styling using CSS |
+| Day 74: Portfolio Site | Built personal portfolio using HTML and CSS |
+| Day 75: Link Tree | Created custom link tree page for social media profiles |
+| Day 76: Flask Intro | Introduction to Flask web framework and server setup |
+| Day 77: Blog Templates | Implemented blog system using Flask templates |
+| Day 78: Reflections | Added reflection system with dynamic routing |
 
 ## How to Run the Code
 

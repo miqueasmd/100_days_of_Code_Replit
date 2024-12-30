@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta information -->
+    <meta charset="utf-8"> <!-- Sets the character encoding to UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures proper scaling on different devices -->
+    <title>My Portfolio - 100 Days of Code</title> <!-- The title of the page, displayed in the browser tab -->
+
+    <!-- Link to external CSS file -->
+    <link href="style.css" rel="stylesheet" type="text/css"> <!-- Links the stylesheet for styling the page -->
+</head>
+
+<body>
+    <!-- Navigation bar for switching between tabs -->
+    <nav class="tabs">
+        <!-- Button for the Portfolio tab -->
+        <button class="tab-button active" onclick="openTab('portfolio')">Portfolio</button>
+        <!-- Button for the Link Tree tab -->
+        <button class="tab-button" onclick="openTab('linktree')">Link Tree</button>
+    </nav>
+
+    <main>
+        <!-- Portfolio Tab Content -->
+        <div id="portfolio" class="tab-content active">
+            <!-- Header Section -->
+            <header>
+                <h1>Miqueas's Portfolio</h1> <!-- Main heading -->
+                <h2>100 Days of Code</h2> <!-- Subheading -->
+            </header>
+            
+            <!-- Introduction Section -->
+            <div class="intro">
+                <p>Welcome to my coding portfolio!</p>
+                <p>
+                    <a href="https://github.com/miqueasmd/100_days_of_Code_Replit" target="_blank">This repository</a> 
+                    contains the daily challenges and projects completed as part of the 100 Days of Code challenge on Replit.
+                </p>
+                <!-- Link to GitHub repository with an image -->
+                <a href="https://github.com/miqueasmd/100_days_of_Code_Replit" class="profile-link" target="_blank">
+                    <img src="images\cv_small_web.jpg" width="250" alt="Portfolio Overview">
+                </a>
+            </div>
+
+            <!-- Placeholder for project sections -->
+            <section class="projects">
+                <!-- Project sections will go here -->
+            </section>
+        </div>
+
+        <!-- Link Tree Tab Content -->
+        <div id="linktree" class="tab-content">
+            <!-- Profile Section -->
+            <div class="profile">
+                <img src="images\cv_small_web.jpg" alt="Miqueas" class="profile-pic"> <!-- Profile picture -->
+                <h1>Miqueas</h1> <!-- Profile name -->
+                <p>miqueasmd@gmail.com</p> <!-- Contact email -->
+            </div>
+            
+            <!-- Links Section -->
+            <div class="links">
+                <a href="https://github.com/miqueasmd" class="link-button" target="_blank">GitHub</a>
+                <a href="https://ko-fi.com/miqueasmd" class="link-button" target="_blank">Ko-fi ☕</a>
+                <a href="https://linkedin.com/in/miqueasmd" class="link-button" target="_blank">LinkedIn</a>
+                <a href="https://www.upwork.com/freelancers/miqueasmd" class="link-button" target="_blank">Upwork</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <!-- Support Section -->
+        <section class="support">
+            <h2><a href="https://ko-fi.com/miqueasmd" target="_blank">☕ Support Me</a></h2> <!-- Link to Ko-fi -->
+            <p>If you like my work, consider supporting my studies!</p>
+            <p>Your contributions will help cover fees and materials for my <strong>Computer Science and Engineering studies at UoPeople</strong> starting in September 2025.</p>
+            <p>Every little bit helps—you can donate from as little as $1.</p>
+            <!-- Button for donations -->
+            <a href="https://ko-fi.com/miqueasmd" class="ko-fi" target="_blank">
+                <img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Support me on Ko-fi"> <!-- Ko-fi support button -->
+            </a>
+        </section>
+
+        <!-- Acknowledgements Section -->
+        <section class="acknowledgements">
+            <h2>Acknowledgements</h2> <!-- Acknowledgements heading -->
+            <p>This project is inspired by the 100 Days of Code challenge on Replit. Please visit 
+                <a href="https://replit.com/" target="_blank">Replit</a> for more information and resources. <!-- Link to Replit -->
+            </p>
+        </section>
+    </footer>
+
+    <!-- Link to external JavaScript file -->
+    <script src="script.js"></script> <!-- Adds interactivity -->
+</body>
+</html>

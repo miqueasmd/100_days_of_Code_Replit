@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Link Tree</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon/favicon.ico') }}">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+
+<body>
+    <div class="profile">
+        <img src="{{ url_for('static', filename='images/cv_small_web.jpg') }}" alt="Miqueas" class="profile-pic">
+        <h1>Miqueas</h1>
+        <p>miqueasmd@gmail.com</p>
+    </div>
+    
+    <div class="links">
+        <a href="https://github.com/miqueasmd" class="link-button" target="_blank">GitHub</a>
+        <a href="https://ko-fi.com/miqueasmd" class="link-button" target="_blank">Ko-fi ☕</a>
+        <a href="https://linkedin.com/in/miqueasmd" class="link-button" target="_blank">LinkedIn</a>
+        <a href="https://www.upwork.com/freelancers/miqueasmd" class="link-button" target="_blank">Upwork</a>
+    </div>
+
+    <footer>
+        <section class="support">
+            <h2><a href="https://ko-fi.com/miqueasmd" target="_blank">☕ Support Me</a></h2> <!-- Link to Ko-fi -->
+            <p>If you like my work, consider supporting my studies!</p>
+            <p>Your contributions will help cover fees and materials for my <strong>Computer Science and Engineering studies at UoPeople</strong> starting in September 2025.</p>
+            <p>Every little bit helps—you can donate from as little as $1.</p>
+            <!-- Button for donations -->
+            <a href="https://ko-fi.com/miqueasmd" class="ko-fi" target="_blank">
+                <img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Support me on Ko-fi"> <!-- Ko-fi support button -->
+            </a>
+        </section>
+
+        <section class="acknowledgements">
+            <h2>Acknowledgements</h2>
+            <p>This project is inspired by the 100 Days of Code challenge on Replit. Please visit 
+                <a href="https://replit.com/">Replit</a> for more information and resources.
+            </p>
+        </section>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

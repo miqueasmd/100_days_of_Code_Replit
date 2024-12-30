@@ -4,9 +4,10 @@ pygame # For music player functionality
 pynput # For keyboard input handling
 csv # Built-in, for CSV file operations
 pillow # For image processing
-
-# Optional but recommended
 colorama  # For better color support across platforms
+flask # For web server functionality
+flask-login # For user authentication
+werkzeug # For utilities including password hashing
 
 # Built-in modules used
 # datetime  - For date and time operations
