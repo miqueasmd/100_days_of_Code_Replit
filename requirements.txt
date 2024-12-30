@@ -8,6 +8,8 @@ colorama  # For better color support across platforms
 flask # For web server functionality
 flask-login # For user authentication
 werkzeug # For utilities including password hashing
+jinja2            # For HTML templating in Flask
+flask-sqlalchemy  # For database management
 
 # Built-in modules used
 # datetime  - For date and time operations
@@ -20,3 +22,4 @@ werkzeug # For utilities including password hashing
 # sys       - For system operations
 # hashlib   - For hashing operations
 # hmac      - For keyed-hashing for message authentication
+# secrets   - For generating secure tokens
