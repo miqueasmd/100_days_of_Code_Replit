@@ -14,40 +14,50 @@
 
     <main class="form-container">
         <!-- Login Form -->
-        <form action="/login" method="post">
+        <form action="/form" method="post">  <!-- Ensure the action points to the correct route -->
+            {{ form.hidden_tag() }}  <!-- Include CSRF token -->
             <h1>Login</h1>
             
             <!-- Flash Messages - Display temporary feedback messages -->
-            {% with messages = get_flashed_messages() %}     <!-- Get messages from Flask session -->
-                {% if messages %}                            <!-- Check if messages exist -->
-                    {% for message in messages %}            <!-- Loop through all messages -->
-                        <div class="alert">                  <!-- Create alert container -->
-                            {{ message }}                    <!-- Display message content -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">
+                            {{ message }}
                         </div>
                     {% endfor %}
                 {% endif %}
-            {% endwith %}                                   <!-- End message context -->
+            {% endwith %}
             
             <!-- Username Input -->
             <div class="form-group">
                 <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
+                {{ form.username(class="form-control", required=True) }}  <!-- Render username field with class -->
+                {% if form.username.errors %}
+                    <div class="error">{{ form.username.errors[0] }}</div>  <!-- Display username errors -->
+                {% endif %}
             </div>
 
             <!-- Email Input -->
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+                {{ form.email(class="form-control", required=True) }}  <!-- Render email field with class -->
+                {% if form.email.errors %}
+                    <div class="error">{{ form.email.errors[0] }}</div>  <!-- Display email errors -->
+                {% endif %}
             </div>
 
             <!-- Password Input -->
             <div class="form-group">
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
+                {{ form.password(class="form-control", required=True) }}  <!-- Render password field with class -->
+                {% if form.password.errors %}
+                    <div class="error">{{ form.password.errors[0] }}</div>  <!-- Display password errors -->
+                {% endif %}
             </div>
 
             <!-- Submit Button -->
-            <button type="submit" class="link-button">Login</button>
+            <button type="submit" class="btn btn-primary">{{ form.submit.label }}</button>  <!-- Render submit button -->
         </form>
     </main>
 

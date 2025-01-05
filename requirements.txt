@@ -12,6 +12,8 @@ jinja2            # For HTML templating in Flask
 flask-sqlalchemy  # For database management
 deep-translator  # For language translation
 Flask-WTF         # For web forms and CSRF protection
+wtforms           # For web forms and CSRF protection
+email-validator   # For email validation
 
 # Additional security dependencies
 itsdangerous       # For secure session handling

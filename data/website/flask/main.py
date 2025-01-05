@@ -1,4 +1,7 @@
 from flask import Flask, redirect, render_template, request, flash, session
+from wtforms import StringField, PasswordField, SubmitField
+from wtforms.validators import DataRequired, Email
+from flask_wtf import FlaskForm
 from flask_wtf.csrf import CSRFProtect
 from datetime import timedelta
 from functools import wraps
@@ -49,7 +52,7 @@ def login_required(f):
     def decorated_function(*args, **kwargs):
         if 'username' not in session:
             flash('Please login first')
-            return redirect('/login1')
+            return redirect('/login')
         return f(*args, **kwargs)
     return decorated_function
 
@@ -166,34 +169,37 @@ users = {
     }
 }
 
-# Route for displaying the login form
-@app.route('/form')
-def show_form():
-    # Render the login form HTML template
-    return render_template('form.html')
+# Define the login form
+class LoginForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired(message="Username is required.")])
+    email = StringField('Email', validators=[DataRequired(message="Email is required."), Email(message="Invalid email format.")])
+    password = PasswordField('Password', validators=[DataRequired(message="Password is required.")])
+    submit = SubmitField('Login')
 
-# Route for handling login submissions
-@app.route("/login", methods=["POST"])
-def login():
-    # Extract username, email, and password from the submitted form
-    username = request.form.get('username')
-    email = request.form.get('email')
-    password = request.form.get('password')
-    
-    try:
-        # Check if the username exists and if the email and password match
-        if (username in users and 
-            users[username]["email"] == email and 
-            users[username]["password"] == password):
-            flash('Login successful!', 'success')  # Flash success message
-            return render_template('success.html', username=username)  # Render the success page
+# Route for displaying the login form
+@app.route('/form', methods=['GET', 'POST'])
+def show_form():
+    form = LoginForm()  # Create an instance of the form
+    if form.validate_on_submit():  # Check if the form is submitted and valid
+        username = form.username.data
+        email = form.email.data
+        password = form.password.data
+        
+        # Handle login logic here...
+        if username in users:
+            user = users[username]
+            if user['email'] == email and user['password'] == password:
+                session['username'] = username  # Store username in session
+                flash('Login successful!', 'success')  # Flash success message
+                return render_template('success.html', username=username)  # Render the success page
+            else:
+                flash('Invalid email or password.', 'error')
+                return render_template('error.html')  # Redirect to error page
         else:
-            flash('Invalid credentials!', 'error')  # Flash error message for invalid credentials
-            return render_template('error.html')  # Render the error page
-    except:
-        # Handle any unexpected errors during login
-        flash('An error occurred!', 'error')  # Flash error message for system errors
-        return render_template('error.html')  # Render the error page
+            flash('Username not found.', 'error')
+            return render_template('error.html')  # Redirect to error page
+
+    return render_template('form.html', form=form)  # Pass the form to the template
     
 # Route for displaying the robot identification form
 @app.route('/not_robot')
@@ -315,8 +321,8 @@ def blog(post):
                          theme=THEMES[theme])
 
 # User authentication routes
-@app.route('/login1', methods=['GET', 'POST'])
-def login1():
+@app.route('/login', methods=['GET', 'POST'])
+def login():
     # Store next URL if coming from somewhere
     if request.method == 'GET':
         next_url = request.args.get('next') or request.referrer
@@ -336,7 +342,7 @@ def login1():
                 return redirect(next_url)
             else:
                 flash('Invalid username or password')
-                return redirect('/login1')
+                return redirect('/login')
     
     return render_template('login.html')
 
@@ -362,7 +368,7 @@ def signup():
                 }
                 print(f"User added: {username}")  # Debug info
                 flash('Account created successfully!')
-                return redirect('/login1')
+                return redirect('/login')
     except Exception as e:
         print(f"Signup error: {str(e)}")  # Debug info
         flash('An error occurred during signup')
@@ -397,7 +403,7 @@ def change_password():
                 db.sync()
                 
                 flash('Password changed successfully!')
-                return redirect('/login1')  # Redirect to login instead of portfolio
+                return redirect('/login')  # Redirect to login instead of portfolio
             else:
                 print(f"Authentication failed for user: {username}")
                 flash('Invalid credentials')
@@ -409,7 +415,7 @@ def change_password():
 def logout():
     session.clear()
     flash('Logged out successfully')
-    return redirect('/login1')
+    return redirect('/login')
 
 @app.route('/blog')
 def blog_list():
