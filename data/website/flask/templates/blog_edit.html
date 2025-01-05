@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if post %}Edit Post{% else %}New Post{% endif %}</title>
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon/favicon.ico') }}">
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="user-nav">
+                <span>Welcome, {{ session.username }}!</span>
+                <a href="/blog" class="link-button">Back to Blog</a>
+                <a href="/logout" class="link-button">Logout</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="blog-container">
+        <form action="{% if post %}/blog/edit/{{ post.id }}{% else %}/blog/new{% endif %}" method="post">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" value="{{ post.title if post else '' }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="body">Content:</label>
+                <textarea id="body" name="body" rows="10" required>{{ post.body if post else '' }}</textarea>
+            </div>
+
+            <button type="submit" class="link-button">{% if post %}Update{% else %}Create{% endif %} Post</button>
+        </form>
+        
+        {% if post %}
+        <form action="/blog/delete/{{ post.id }}" method="post" onsubmit="return confirm('Are you sure you want to delete this post?');">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            <button type="submit" class="link-button danger">Delete Post</button>
+        </form>
+        {% endif %}
+    </main>
+</body>
+</html>

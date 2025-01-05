@@ -10,7 +10,17 @@
 </head>
 
 <body>
+
     <header>
+        <nav class="main-nav">
+            <div class="user-nav">
+                {% if session.username %}
+                    <span>Welcome, {{ session.username }}!</span>
+                    <a href="/logout" class="link-button">Logout</a>
+                {% endif %}
+            </div>
+        </nav>
+        
         <h1>Miqueas's Portfolio</h1>
         <h2>100 Days of Code</h2>
     </header>

@@ -228,3 +228,238 @@ html, body {
 .content .link-button:hover {
   background: #4a9eff;        /* Light blue highlight */
 }
+
+/* Form Container - Centers form and limits width for readability */
+.form-container {
+  max-width: 400px;         /* Maximum width of form */
+  margin: 40px auto;        /* Centers form with top/bottom spacing */
+  padding: 20px;           /* Inner spacing around content */
+}
+
+/* Form Group - Styles each input group (label + input) */
+.form-group {
+  margin-bottom: 20px;     /* Space between form groups */
+}
+
+/* Label Styling - Format input labels */
+.form-group label {
+  display: block;          /* Makes label full width */
+  margin-bottom: 5px;      /* Space between label and input */
+  color: #4a9eff;         /* Blue accent color */
+}
+
+/* Input Field Styling - Format text inputs */
+.form-group input {
+  width: 100%;            /* Full width of container */
+  padding: 8px;           /* Inner spacing in input */
+  border: none;           /* Removes default border */
+  border-radius: 4px;     /* Rounded corners */
+  background: #1c2333;    /* Dark background */
+  color: white;           /* Light text */
+}
+
+/* Form Heading - Style for form title */
+form h1 {
+  text-align: center;     /* Centers heading text */
+  margin-bottom: 30px;    /* Space after heading */
+}
+
+/* Success Page Styles */
+/* Styles for the container of the success page */
+.success-container {
+  text-align: center; /* Centers all text within the container */
+  padding: 50px; /* Adds spacing inside the container */
+  background: #1c2333; /* Sets a dark background color for the container */
+  max-width: 600px; /* Limits the maximum width of the container */
+  margin: 40px auto; /* Centers the container horizontally and adds vertical spacing */
+  border-radius: 8px; /* Rounds the corners of the container */
+}
+
+/* Error Page Styles */
+/* Styles for the container of the error page */
+.error-container {
+  text-align: center; /* Centers all text within the container */
+  padding: 50px; /* Adds spacing inside the container */
+  background: #ff4a4a; /* Sets a red background color for error indication */
+  color: white; /* Sets the text color to white for better readability */
+  max-width: 600px; /* Limits the maximum width of the container */
+  margin: 40px auto; /* Centers the container horizontally and adds vertical spacing */
+  border-radius: 8px; /* Rounds the corners of the container */
+}
+
+/* Styling for images within the error container */
+.error-container img {
+  max-width: 300px; /* Limits the width of the image to 300px */
+  margin: 20px 0; /* Adds spacing above and below the image */
+}
+
+/* Alert Message - Styling for flash messages */
+.alert {
+  padding: 10px;              /* Inner spacing */
+  margin-bottom: 15px;        /* Space below alert */
+  border-radius: 4px;         /* Rounded corners */
+  color: white;              /* Light text */
+  background: #4a9eff;       /* Blue background matching theme */
+  text-align: center;        /* Center message */
+}
+
+/* Radio Group - Container for radio buttons and labels */
+.radio-group {
+  display: flex;           /* Horizontal layout */
+  gap: 20px;              /* Space between options */
+  margin-top: 10px;       /* Space after label */
+  align-items: center;    /* Vertical alignment */
+}
+
+/* Radio Labels - Style for radio button labels */
+.radio-group label {
+  color: white;           /* Light text */
+  margin-left: 5px;       /* Space after radio button */
+  cursor: pointer;        /* Show clickable */
+}
+
+/* Radio Inputs - Custom radio button appearance */
+.radio-group input[type="radio"] {
+  cursor: pointer;        /* Show clickable */
+  accent-color: #4a9eff; /* Match theme color */
+}
+
+/* Select Dropdown - Styling for dropdown menus */
+.form-group select {
+  width: 100%;            /* Full width */
+  padding: 8px;           /* Inner spacing */
+  border: none;           /* Remove border */
+  border-radius: 4px;     /* Rounded corners */
+  background: #1c2333;    /* Dark background */
+  color: white;           /* Light text */
+  cursor: pointer;        /* Show clickable */
+}
+
+/* Select Options - Style dropdown options */
+.form-group select option {
+  background: #1c2333;    /* Dark background */
+  color: white;           /* Light text */
+}
+
+/* Language Selector - Navigation for language options */
+.language-selector {
+  display: grid;                    /* Grid layout */
+  grid-template-columns: repeat(5, 1fr); /* 5 columns */
+  grid-template-rows: repeat(2, 1fr);    /* 2 rows */
+  gap: 10px;                       /* Spacing */
+  max-width: 800px;                /* Container width */
+  margin: 20px auto;               /* Center container */
+  padding: 0 20px;                 /* Side padding */
+}
+
+.language-selector a {
+  width: 100%;                     /* Full width in grid cell */
+  text-align: center;              /* Center text */
+  margin: 0;                       /* Remove margin */
+}
+
+/* Active Language Button - Highlight current language */
+.language-selector .active {
+  background: #4a9eff;    /* Blue highlight */
+  color: white;           /* Light text */
+}
+
+/* Content Container - Main content area */
+.content-container {
+    max-width: 800px;        /* Limit width */
+    width: 90%;             /* Responsive width */
+    margin: 40px auto;      /* Center horizontally */
+    padding: 20px;          /* Inner spacing */
+    background: #1c2333;    /* Dark background */
+    border-radius: 8px;     /* Rounded corners */
+    display: flex;          /* Flex container */
+    flex-direction: column; /* Stack children */
+    align-items: center;    /* Center horizontally */
+}
+
+/* Content Section - Text content styling */
+.content {
+    width: 100%;           /* Full width */
+    margin-bottom: 30px;   /* Space after content */
+    text-align: center;    /* Center text */
+    color: white;          /* Light text */
+    padding: 0 20px;       /* Side padding */
+    box-sizing: border-box;/* Include padding in width */
+}
+
+/* Content Headings */
+.content h2 {
+    color: #4a9eff;         /* Blue accent */
+    margin-bottom: 20px;    /* Space after heading */
+}
+
+.form-link {
+  color: #ffffff;           /* Match form label color */
+  text-decoration: none;    /* Remove underline */
+}
+
+.form-link:hover {
+  color: #4a9eff;          /* Blue highlight on hover */
+}
+
+.form-footer a {
+  color: #4a9eff;          /* Match form labels */
+  text-decoration: none;   /* Remove underline */
+  transition: opacity 0.3s;/* Smooth hover */
+}
+
+.form-footer a:hover {
+  opacity: 0.8;           /* Slight dim on hover */
+}
+
+.user-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-nav span {
+  color: #ffffff;
+}
+
+.danger {
+  background-color: #dc3545;
+}
+
+.danger:hover {
+  background-color: #c82333;
+}
+
+.post-title a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.post-title a:hover {
+  text-decoration: underline;
+}
+
+.blog-preview h2 a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.blog-preview h2 a:hover {
+  text-decoration: underline;
+}
+
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0.5rem 0;
+}
+
+.post-meta .title {
+  color: #0066cc;
+  font-weight: bold;
+}
+
+.blog-preview h2 {
+  margin-bottom: 0.5rem;
+}

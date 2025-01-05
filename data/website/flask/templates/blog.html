@@ -3,22 +3,60 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}</title>
-    <link rel="icon" type="image/x-icon" href="/static/images/favicon/favicon.ico">
-    <link href="/static/css/style.css" rel="stylesheet">
+    <title>{{ post.title }}</title>
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <style>
+        body {
+            background: {{ theme.background }};
+            color: {{ theme.text }};
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .blog-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h1 { 
+            color: {{ theme.accent }}; 
+        }
+
+        .theme-selector {
+            margin-top: 20px;
+        }
+
+        .theme-selector a {
+            color: {% if theme.link %}{{ theme.link }}{% else %}{{ theme.accent }}{% endif %};
+            text-decoration: none;
+            margin-right: 20px;        /* Add space between links */
+            padding: 5px 15px;         /* Add padding around text */
+            border: 1px solid {{ theme.accent }};
+            border-radius: 4px;
+        }
+
+        .theme-selector a:hover {
+            background: {{ theme.accent }};
+            color: {{ theme.background }};
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>{{ title }}</h1>
-        <h2 class="date">{{ date }}</h2>
-    </header>
-    
-    <main class="blog-post">
-        <article>
-            <div class="content">
-                <p>{{ text }}</p>
-            </div>
-        </article>
+    <main class="blog-container">
+        <h1>{{ post.title }}</h1>
+        <div class="date">{{ post.date }}</div>
+        <p>{{ post.text }}</p>
+        
+        <div class="theme-selector">
+            <p>Choose theme:</p>
+            <a href="?theme=default">Default</a>
+            <a href="?theme=light">Light</a>
+            <a href="?theme=dark">Dark</a>
+        </div>
     </main>
 
     <footer>
@@ -31,11 +69,9 @@
             <h2><a href="https://ko-fi.com/miqueasmd" target="_blank">&#9749; Support Me</a></h2>
             <p>If you like my work, consider supporting my studies!</p>
             <a href="https://ko-fi.com/miqueasmd" class="ko-fi" target="_blank">
-                <img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Support me on Ko-fi"> <!-- Ko-fi support button -->
+                <img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Support me on Ko-fi">
             </a>
         </section>
     </footer>
-
-    <script src="/static/js/script.js"></script>
 </body>
 </html>

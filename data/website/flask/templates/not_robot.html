@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Human Verification</title>
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon/favicon.ico') }}">
+</head>
+<body>
+    <main class="form-container">
+        <!-- Robot Verification Form -->
+        <form action="/robot" method="post">
+            <h1>Human Verification</h1>
+            
+            <!-- Flash Messages -->
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            
+            <!-- Radio Button Question -->
+            <div class="form-group">
+                <label>Are you made of metal?</label>
+                <div class="radio-group">
+                    <input type="radio" id="metalYes" name="metal" value="Yes" required>
+                    <label for="metalYes">Yes</label>
+                    <input type="radio" id="metalNo" name="metal" value="No">
+                    <label for="metalNo">No</label>
+                </div>
+            </div>
+
+            <!-- Text Input Question -->
+            <div class="form-group">
+                <label for="infinity">What happens when you divide by zero?</label>
+                <input type="text" id="infinity" name="infinity" required>
+            </div>
+
+            <!-- Dropdown Question -->
+            <div class="form-group">
+                <label for="food">What's your favorite food?</label>
+                <select id="food" name="food" required>
+                    <option value="">Select one...</option>
+                    <option value="pizza">Pizza</option>
+                    <option value="ice cream">Ice Cream</option>
+                    <option value="synthetic oil">Synthetic Oil</option>
+                    <option value="chocolate">Chocolate</option>
+                </select>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="link-button">Verify Human</button>
+        </form>
+    </main>
+
+    <footer>
+        <nav class="blog-nav">
+            <a href="/form" class="link-button">Back to Login</a>
+        </nav>
+
+        <section class="support">
+            <h2><a href="https://ko-fi.com/miqueasmd" target="_blank">&#9749; Support Me</a></h2>
+            <p>If you like my work, consider supporting my studies!</p>
+            <a href="https://ko-fi.com/miqueasmd" class="ko-fi" target="_blank">
+                <img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Support me on Ko-fi">
+            </a>
+        </section>
+    </footer>
+</body>
+</html>

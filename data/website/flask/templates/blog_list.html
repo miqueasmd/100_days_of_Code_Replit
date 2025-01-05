@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Posts</title>
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon/favicon.ico') }}">
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="user-nav">
+                {% if session.username %}
+                    <span>Welcome, {{ session.username }}!</span>
+                    <a href="/blog/new" class="link-button">New Post</a>
+                    <a href="/logout" class="link-button">Logout</a>
+                {% else %}
+                    <a href="/login1" class="link-button">Login</a>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+
+    <main class="blog-container">
+        <h1>Blog Posts</h1>
+        {% for post in posts %}
+        <article class="blog-preview">
+            <h2><a href="/blog/edit/{{ post.id }}">{{ post.title }}</a></h2>
+            <div class="post-meta">
+                <span class="date">{{ post.date }}</span> 
+                <span class="title">{{ post.title }}</span>
+                <span class="author">by {{ post.author }}</span>
+                {% if session.username and session.username == post.author %}
+                    <a href="/blog/edit/{{ post.id }}" class="link-button">Edit/Delete</a>
+                {% endif %}
+            </div>
+            <div class="post-excerpt">
+                {{ post.body[:200] }}...
+            </div>
+        </article>
+        {% endfor %}
+    </main>
+    
+</body>
+</html>

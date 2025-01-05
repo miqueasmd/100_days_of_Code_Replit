@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="{{ current_lang }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ content.title }}</title>
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon/favicon.ico') }}">
+</head>
+<body>
+    <header>
+        <h1>{{ content.title }}</h1>
+    </header>
+
+    <main class="content-container">
+        <section class="content">
+            <h2>{{ content.subtitle }}</h2>
+            <p>{{ content.content }}</p>
+        </section>
+
+        <!-- Language Selection -->
+        <nav class="language-selector">
+            {% for code, name in languages.items() %}
+                <a href="/multilingual?lang={{ code }}" 
+                   class="link-button {% if code == current_lang %}active{% endif %}">
+                    {{ name }}
+                </a>
+            {% endfor %}
+        </nav>
+
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </main>
+
+    <footer>
+        <nav class="blog-nav">
+            <a href="/portfolio" class="link-button">Back to Portfolio</a>
+        </nav>
+
+        <section class="support">
+            <h2><a href="https://ko-fi.com/miqueasmd" target="_blank">&#9749; Support Me</a></h2>
+            <p>If you like my work, consider supporting my studies!</p>
+            <a href="https://ko-fi.com/miqueasmd" class="ko-fi" target="_blank">
+                <img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Support me on Ko-fi">
+            </a>
+        </section>
+
+    </footer>
+</body>
+</html>

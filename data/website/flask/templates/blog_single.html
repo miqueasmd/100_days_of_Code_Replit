@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ post.title }}</title>
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon/favicon.ico') }}">
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="user-nav">
+                {% if session.username %}
+                    <span>Welcome, {{ session.username }}!</span>
+                    <a href="/logout" class="link-button">Logout</a>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+
+    <main class="blog-container">
+        <article class="blog-post">
+            <h1>{{ post.title }}</h1>
+            <div class="post-meta">
+                <span class="date">{{ post.date }}</span>
+                {% if session.username %}
+                    <a href="/blog/edit/{{ post.id }}" class="link-button">Edit</a>
+                {% endif %}
+            </div>
+            <div class="post-content">
+                {{ post.body }}
+            </div>
+        </article>
+        <nav class="blog-nav">
+            <a href="/blog" class="link-button">Back to Blog</a>
+        </nav>
+    </main>
+</body>
+</html>

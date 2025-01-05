@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon/favicon.ico') }}">
+</head>
+<body>
+    <header>
+        <h1>Sign Up</h1>
+    </header>
+
+    <main class="form-container">
+        <form action="/signup" method="post">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            <h1>Create Account</h1>
+            
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <button type="submit" class="link-button">Sign Up</button>
+            
+            <p class="form-footer">
+                Already have an account? <a href="/login1">Login</a>
+            </p>
+        </form>
+    </main>
+
+    <footer>
+        <nav class="blog-nav">
+            <a href="/portfolio" class="link-button">Back to Portfolio</a>
+        </nav>
+    </footer>
+</body>
+</html>

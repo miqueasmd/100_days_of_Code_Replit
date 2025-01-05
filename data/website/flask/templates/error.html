@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Denied</title>
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon/favicon.ico') }}">
+</head>
+<body>
+    <main class="error-container">
+        <h1>🚫 ACCESS DENIED! 🚫</h1>
+        <p>Invalid credentials. You shall not pass!</p>
+        <a href="/form" class="link-button">Try Again</a>
+    </main>
+</body>
+</html>
