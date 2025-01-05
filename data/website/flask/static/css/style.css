@@ -412,6 +412,7 @@ form h1 {
   opacity: 0.8;           /* Slight dim on hover */
 }
 
+/* Navigation bar user section styles */
 .user-nav {
   display: flex;
   align-items: center;
@@ -422,6 +423,7 @@ form h1 {
   color: #ffffff;
 }
 
+/* Danger button styling for delete actions */
 .danger {
   background-color: #dc3545;
 }
@@ -430,6 +432,7 @@ form h1 {
   background-color: #c82333;
 }
 
+/* Blog post title link styling */
 .post-title a {
   color: #0066cc;
   text-decoration: none;
@@ -439,6 +442,7 @@ form h1 {
   text-decoration: underline;
 }
 
+/* Blog preview heading styles */
 .blog-preview h2 a {
   color: #0066cc;
   text-decoration: none;
@@ -448,6 +452,7 @@ form h1 {
   text-decoration: underline;
 }
 
+/* Post metadata layout and styling */
 .post-meta {
   display: flex;
   align-items: center;
@@ -462,4 +467,52 @@ form h1 {
 
 .blog-preview h2 {
   margin-bottom: 0.5rem;
+}
+
+/* Dashboard layout container */
+.dashboard-container {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Dashboard navigation grid layout */
+.dashboard-nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.nav-item {
+  padding: 1rem;
+  text-align: center;
+  background: #f8f9fa;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #333;
+  transition: all 0.3s ease;  /* Smooth transition for all changes */
+}
+
+.nav-item:hover {
+  background: #0275d8;  /* Bootstrap primary blue */
+  color: white;
+  transform: translateY(-2px);  /* Slight lift effect */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);  /* Subtle shadow */
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.welcome-message {
+  margin: 0;
+  flex-grow: 1;
+  text-align: left;
 }

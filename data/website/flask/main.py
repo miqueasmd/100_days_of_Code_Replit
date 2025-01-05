@@ -7,6 +7,7 @@ from datetime import timedelta
 from functools import wraps
 from dotenv import load_dotenv
 from deep_translator import GoogleTranslator
+from werkzeug.utils import secure_filename
 import shelve
 import os
 import time
@@ -56,6 +57,37 @@ def login_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
+import os
+from werkzeug.utils import secure_filename
+
+UPLOAD_FOLDER = 'static/images'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+@app.route('/upload_profile', methods=['POST'])
+@login_required
+def upload_profile():
+    if 'profile_pic' not in request.files:
+        flash('No file selected')
+        return redirect('/dashboard')
+        
+    file = request.files['profile_pic']
+    if file and allowed_file(file.filename):
+        filename = f"{session['username']}_{secure_filename(file.filename)}"
+        file_path = os.path.join(UPLOAD_FOLDER, filename)
+        file.save(file_path)
+        
+        with shelve.open('static/db/users', writeback=True) as db:
+            db[session['username']]['profile_pic'] = filename
+            session['profile_pic'] = filename  # Update session with the new profile picture
+            db.sync()
+    else:
+        flash('Invalid file type. Please upload a PNG, JPG, JPEG, or GIF image.')
+    
+    return redirect('/dashboard')
+
 # Route for the home page, redirects to the portfolio
 @app.route('/')
 def index():
@@ -83,7 +115,7 @@ def blog_redirect2():
 
 # Route for the first blog post, renders the blog.html template with context
 @app.route('/first')
-@login_required
+#@login_required
 def first_post():
     theme = request.args.get('theme', 'default')
     if theme not in THEMES:
@@ -98,7 +130,7 @@ def first_post():
 
 # Route for the second blog post, renders the blog.html template with context
 @app.route('/second')
-@login_required
+#@login_required
 def second_post():
     theme = request.args.get('theme', 'default')
     if theme not in THEMES:
@@ -294,7 +326,7 @@ THEMES = {
 }
 
 @app.route('/blog/<post>', methods=['GET'])
-@login_required
+#@login_required
 def blog(post):
     theme = request.args.get('theme', 'default')
     if theme not in THEMES:
@@ -323,28 +355,39 @@ def blog(post):
 # User authentication routes
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    # Store next URL if coming from somewhere
-    if request.method == 'GET':
-        next_url = request.args.get('next') or request.referrer
-        if next_url:
-            session['next'] = next_url
-
+    session.clear()  # Clear session when accessing login
+    
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
         
-        with shelve.open('static/db/users') as db:
-            if username in db and db[username]['password'] == password:
-                session['username'] = username
-                # Redirect to stored URL or default to blog
-                next_url = session.pop('next', '/blog')
-                flash(f"Welcome back {db[username]['name']}!")
-                return redirect(next_url)
-            else:
-                flash('Invalid username or password')
-                return redirect('/login')
+        try:
+            with shelve.open('static/db/users', writeback=True) as db:
+                if username in db and db[username]['password'] == password:
+                    session['username'] = username
+                    if 'profile_pic' in db[username]:  # Add profile pic to session
+                        session['profile_pic'] = db[username]['profile_pic']
+                    db.sync()
+                    flash(f"Welcome back {username}!")
+                    return redirect('/dashboard')
+                else:
+                    flash('Invalid username or password')
+        except Exception as e:
+            print(f"Login error: {str(e)}")
+            flash('Login error occurred')
     
     return render_template('login.html')
+
+@app.route('/dashboard')
+def dashboard():
+    links = {
+        'Portfolio': '/portfolio',
+        'Blog': '/blog',
+        'Multilingual': '/multilingual',
+        'Reflection': '/reflection',
+        'Linktree': '/linktree'
+    }
+    return render_template('dashboard.html', links=links)
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():

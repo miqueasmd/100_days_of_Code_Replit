@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+
+    <header class="dashboard-header">
+        <div class="user-profile">
+            {% if session.get('profile_pic') %}
+                <img src="{{ url_for('static', filename='images/' + session.profile_pic) }}" alt="Profile" class="profile-pic">
+            {% else %}
+                <img src="{{ url_for('static', filename='images/default_profile.png') }}" alt="Default Profile" class="profile-pic"> <!-- Optional default image -->
+            {% endif %}
+            <form action="{{ url_for('upload_profile') }}" 
+                  method="post" 
+                  enctype="multipart/form-data" 
+                  class="upload-form">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                <input type="file" name="profile_pic" accept="image/*" required>
+                <button type="submit" class="link-button">Upload Profile Picture</button>
+            </form>
+            <h1 class="welcome-message">Welcome {{ session.username }}</h1>
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+        <nav class="dashboard-nav">
+            <a href="/portfolio" class="nav-item">Portfolio</a>
+            <a href="/blog" class="nav-item">Blog</a>
+            <a href="/multilingual" class="nav-item">Multilingual Web</a>
+            <a href="/linktree" class="nav-item">Linktree</a>
+            <a href="/change_password" class="nav-item">Change Password</a>
+            <a href="/logout" class="nav-item">Logout</a>
+        </nav>
+    </main>
+
+    <footer>
+        <section class="support">
+            <h2><a href="https://ko-fi.com/miqueasmd" target="_blank">☕ Support Me</a></h2> <!-- Link to Ko-fi -->
+            <p>If you like my work, consider supporting my studies!</p>
+            <p>Your contributions will help cover fees and materials for my <strong>Computer Science and Engineering studies at UoPeople</strong> starting in September 2025.</p>
+            <p>Every little bit helps—you can donate from as little as $1.</p>
+            <!-- Button for donations -->
+            <a href="https://ko-fi.com/miqueasmd" class="ko-fi" target="_blank">
+                <img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Support me on Ko-fi"> <!-- Ko-fi support button -->
+            </a>
+        </section>
+
+        <section class="acknowledgements">
+            <h2>Acknowledgements</h2>
+            <p>This project is inspired by the 100 Days of Code challenge on Replit. Please visit 
+                <a href="https://replit.com/">Replit</a> for more information and resources.
+            </p>
+        </section>
+    </footer>
+
+</body>
+</html>
