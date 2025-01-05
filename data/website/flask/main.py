@@ -241,7 +241,6 @@ DEFAULT_CONTENT = {
 }
 
 @app.route('/multilingual')
-@login_required
 def multilingual():
     lang = request.args.get('lang', 'en')
     
