@@ -176,6 +176,15 @@ This repository contains the daily challenges and projects completed as part of 
 
 4. Run the Python scripts using your preferred Python interpreter.
 
+5. For the Flask application:
+   ```bash
+   python main.py
+   ```
+   - Access the application in your web browser at `http://127.0.0.1:81` (5000, or the port you specified).
+
+6. For database setup (if applicable):
+   - Ensure any necessary database migrations or initializations are performed.
+
 ## Project Structure
 
 ```
@@ -184,6 +193,17 @@ This repository contains the daily challenges and projects completed as part of 
 │   ├── lessons_4-20.ipynb
 │   └── ...
 ├── data/
+│   ├── website/
+│   │   └── flask/
+│   │       ├── static/
+│   │       │   ├── css/
+│   │       │   │   └── style.css
+│   │       │   ├── db/
+│   │       │   ├── images/
+│   │       │   └── js/
+│   │       ├── templates/
+│   │       │   └── chatroom.html
+│   │       └── main.py
 │   └── data files
 ├── .env
 ├── requirements.txt
