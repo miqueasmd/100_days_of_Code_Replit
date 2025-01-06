@@ -216,13 +216,17 @@ We will continue updating this readme file as we complete more challenges and pr
 
 Stay tuned for more exciting projects and challenges!
 
-## Security Setup
+## Security Best Practices
 
-1. Add your secure credentials to `.env`
-2. Never commit `.env` file
-3. Never share your credentials
-4. Use strong passwords
-5. Change credentials regularly
+1. Store sensitive credentials in environment variables (e.g., `.env` files) and ensure they are secure.
+2. Protect your credentials: Never share them or commit sensitive files (e.g., `.env`) to version control.
+3. Use strong, regularly updated credentials for enhanced security.
+4. Implement HTTPS to encrypt data in transit.
+5. Regularly update dependencies to patch vulnerabilities.
+6. Use a web application firewall (WAF) to protect against common web exploits.
+7. Limit user permissions by following the principle of least privilege.
+8. Regularly monitor logs for suspicious activity or unauthorized access attempts.
+
 
 ## ☕ Support Me
 

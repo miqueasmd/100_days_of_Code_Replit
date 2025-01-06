@@ -7,14 +7,13 @@ pillow # For image processing
 colorama  # For better color support across platforms
 flask # For web server functionality
 flask-login # For user authentication
-werkzeug # For utilities including password hashing
+werkzeug # For utilities including password hashing and file uploads
 jinja2            # For HTML templating in Flask
 flask-sqlalchemy  # For database management
 deep-translator  # For language translation
 Flask-WTF         # For web forms and CSRF protection
 wtforms           # For web forms and CSRF protection
 email-validator   # For email validation
-werkzeug          # For file uploads
 
 # Additional security dependencies
 itsdangerous       # For secure session handling
