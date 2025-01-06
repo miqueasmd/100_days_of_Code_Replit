@@ -425,11 +425,17 @@ form h1 {
 
 /* Danger button styling for delete actions */
 .danger {
-  background-color: #dc3545;
+  background-color: #ff4d4d; /* Red background */
+  color: white; /* White text */
+  border: none; /* No border */
+  padding: 0.5rem 1rem; /* Padding */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth transition */
 }
 
 .danger:hover {
-  background-color: #c82333;
+  background-color: #ff1a1a; /* Darker red on hover */
 }
 
 /* Blog post title link styling */
@@ -501,18 +507,90 @@ form h1 {
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);  /* Subtle shadow */
 }
 
+/* User profile container styles */
 .user-profile {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 1rem;
-  padding: 1rem;
-  max-width: 800px;
-  margin: 0 auto;
+  display: flex;            /* Use flexbox layout */
+  align-items: center;      /* Center items vertically */
+  justify-content: flex-start;  /* Align items to start of container */
+  gap: 1rem;               /* Space between flex items */
+  padding: 1rem;           /* Inner spacing */
+  max-width: 800px;        /* Maximum container width */
+  margin: 0 auto;          /* Center container horizontally */
 }
 
+/* Welcome message text styles */
 .welcome-message {
-  margin: 0;
-  flex-grow: 1;
-  text-align: left;
+  margin: 0;              /* Remove default margins */
+  flex-grow: 1;          /* Allow text to fill available space */
+  text-align: left;      /* Align text to left */
+}
+
+/* Reflection day selector dropdown */
+.reflection-nav select {
+  padding: 0.5rem;       /* Inner spacing */
+  border: 1px solid #ddd; /* Light gray border */
+  border-radius: 4px;    /* Rounded corners */
+}
+
+/* Chat room container layout */
+.chat-container {
+  max-width: 800px;         /* Set maximum width */
+  margin: 2rem auto;        /* Center container with margin */
+  padding: 1rem;           /* Inner spacing */
+}
+
+/* Message container */
+.message {
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Center items vertically */
+  margin: 1rem 0; /* Vertical spacing between messages */
+  padding: 1rem; /* Inner message padding */
+  background: #f8f9fa; /* Light background color */
+  border-radius: 8px; /* Rounded corners */
+}
+
+/* Username styling */
+.message-user {
+  margin-right: 10px; /* Space between username and profile picture */
+}
+
+/* Profile picture styling */
+.message-profile {
+  margin-right: 10px; /* Space between profile picture and message content */
+}
+
+/* Profile picture size */
+.profile-pic-small {
+  width: 40px; /* Fixed width */
+  height: 40px; /* Fixed height */
+  border-radius: 50%; /* Circular shape */
+  object-fit: cover; /* Maintain aspect ratio */
+}
+
+/* Message content section */
+.message-content {
+  text-align: left;                /* Align message text to left */
+  flex: 1;                         /* Allow content to grow */
+}
+
+.message-time {
+  display: block; /* Make it a block element */
+  font-size: 0.8em; /* Smaller font size */
+  color: #aaa; /* Light gray color */
+  margin-top: 5px; /* Space above the timestamp */
+}
+
+/* Message input form layout */
+.message-form {
+  display: flex;                   /* Use flexbox for form */
+  gap: 1rem;                       /* Space between elements */
+  margin-top: 2rem;               /* Top margin */
+}
+
+/* Message input field styling */
+.message-form input[type="text"] {
+  flex: 1;                         /* Allow input to grow */
+  padding: 0.5rem;                 /* Inner padding */
+  border: 1px solid #ddd;          /* Light border */
+  border-radius: 4px;              /* Rounded corners */
 }

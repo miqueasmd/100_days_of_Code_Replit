@@ -4,7 +4,7 @@ This repository contains the daily challenges and projects completed as part of 
 
 ## Features
 
-Game Development
+### Game Development
 - Interactive command-line games and quizzes
 - Random number generation and game logic
 - Score tracking and statistics
@@ -15,7 +15,7 @@ Game Development
 - Visual novel engine
 - Guess Who game implementation
 
-User Interface
+### User Interface
 - Text-based user interfaces with color support
 - Color text and rainbow effects
 - Multi-option menu systems
@@ -26,7 +26,7 @@ User Interface
 - Flask web interface
 - Dynamic content routing
 
-Data Management
+### Data Management
 - File handling and data persistence
 - Auto-save and auto-load functionality
 - CSV file handling
@@ -38,7 +38,7 @@ Data Management
 - User authentication systems
 - Multi-user login handling
 
-Tools and Applications
+### Tools and Applications
 - String manipulation and text formatting
 - Mathematical calculations and calculator GUI
 - Time and date handling
@@ -53,7 +53,7 @@ Tools and Applications
 - Reflection system
 - Dynamic URL routing
 
-Web Development
+### Web Development
 - HTML5 and CSS3
 - Flask web framework
 - Template systems
@@ -62,11 +62,15 @@ Web Development
 - User session management
 - Responsive web design
 - Dark theme implementation
+- Login and signup forms, session management, and "I'm Not a Robot" verification.
+- Webpages that display content based on the URL ending.
+- Support for dynamic theme changes in the blogging engine.
+- User authentication, message display, and admin features for message deletion.
 
 ## Challenges Completed
 
 | Day + Challenge Name | Description |
-|------------|-------------|
+|----------------------|-------------|
 | Day 4: Color Text | Learned how to add colored text output using ANSI color codes and created examples with different colors. |
 | Day 5: Which Character Are You? | Created an Avengers character quiz that determines which character you are based on yes/no questions. |
 | Day 6: Secure Login | Built a login system that gives personalized greetings to three different users with username/password verification. |
@@ -142,6 +146,17 @@ Web Development
 | Day 76: Flask Intro | Introduction to Flask web framework and server setup |
 | Day 77: Blog Templates | Implemented blog system using Flask templates |
 | Day 78: Reflections | Added reflection system with dynamic routing |
+| Day 79: Login Form for a Webpage | Created a login form that takes a username, email address, and password, with a submit button that posts data to `/login`. |
+| Day 80: Connect Login Form to Flask | Integrated the login form with Flask, ensuring it works with three valid username and password combinations, and created separate pages for valid and invalid users. |
+| Day 81: "I'm Not a Robot" Check | Developed a verification system with tricky questions to identify potential bots, including yes/no questions, free text, and dropdown selections. |
+| Day 82: Go Bilingual | Created a bilingual webpage that displays content based on the URL ending, allowing users to switch between languages. |
+| Day 83: Custom Themes for Blogging Engine | Enhanced a blogging engine to support custom themes, allowing users to change the theme via GET requests. |
+| Day 84: Signup Form for Flask Website | Built a signup form that collects user details and creates an account in a database, redirecting users to the login form upon successful signup. |
+| Day 85: Extend Login System with Sessions | Extended the login system to use sessions for storing user login information, ensuring users cannot access pages without logging in. |
+| Day 86: Fully Functional Blog Engine | Developed a blog engine with features for adding and viewing posts, with a simple login system for the author. |
+| Day 87: Simplify Login Page for Blog Engine | Refined the login page to reduce code complexity and improve user experience. |
+| Day 88: Adapt Blog Engine for User Access | Modified the blog engine to allow public access to the blog while restricting admin features to the author. |
+| Day 89: Community Chat App | Created a chat application with user authentication, message display, and admin features for message deletion. |
 
 ## How to Run the Code
 

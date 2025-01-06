@@ -3,7 +3,7 @@ from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, Email
 from flask_wtf import FlaskForm
 from flask_wtf.csrf import CSRFProtect
-from datetime import timedelta
+from datetime import timedelta, datetime
 from functools import wraps
 from dotenv import load_dotenv
 from deep_translator import GoogleTranslator
@@ -57,9 +57,6 @@ def login_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
-import os
-from werkzeug.utils import secure_filename
-
 UPLOAD_FOLDER = 'static/images'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
@@ -91,7 +88,7 @@ def upload_profile():
 # Route for the home page, redirects to the portfolio
 @app.route('/')
 def index():
-    return redirect('/portfolio')
+    return redirect('/dashboard')
 
 # Route for the portfolio page, renders the portfolio.html template
 @app.route('/portfolio')
@@ -170,6 +167,14 @@ reflections = {
         "reflection": "Reflections - Creating a reflection system using Flask routes and templates."
     }
 }
+
+@app.route('/reflection/goto', methods=['POST'])
+def goto_reflection():
+    day = request.form.get('day')
+    if not day or int(day) < 73 or int(day) > 78:
+        flash('Invalid day selected')
+        return redirect('/reflection/73')
+    return redirect(f'/reflection/{day}')
 
 # Route for displaying reflections for specific days
 @app.route('/reflection/<day>')
@@ -380,14 +385,7 @@ def login():
 
 @app.route('/dashboard')
 def dashboard():
-    links = {
-        'Portfolio': '/portfolio',
-        'Blog': '/blog',
-        'Multilingual': '/multilingual',
-        'Reflection': '/reflection',
-        'Linktree': '/linktree'
-    }
-    return render_template('dashboard.html', links=links)
+    return render_template('dashboard.html')
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -551,6 +549,91 @@ def blog_delete(post_id):
             del db[post_id]
             flash('Post deleted successfully')
     return redirect('/blog')
+
+@app.route('/chatroom', methods=['GET', 'POST'])
+@login_required
+def chatroom():
+    limit = request.args.get('limit', default=5, type=int)  # Get limit from query parameters
+    return render_template('chatroom.html', messages=get_messages(limit=limit))  # Pass limit to get_messages
+
+@app.route('/send_message', methods=['POST'])  # Ensure this route is defined
+@login_required
+def send_message():
+    message = request.form.get('message')
+    if not message:
+        flash('Message cannot be empty.')
+        return redirect('/chatroom')
+
+    now = datetime.now()
+    timestamp = str(time.time())
+
+    with shelve.open('static/db/chat') as db:
+        db[timestamp] = {
+            'id': timestamp,
+            'username': session['username'],
+            'content': message,
+            'profile_pic': session.get('profile_pic', 'default_profile.png'),
+            'timestamp': now.strftime('%Y-%m-%d %H:%M:%S'),
+        }
+
+    return redirect('/chatroom')  # Redirect back to the chat room
+
+def get_messages(limit=5):
+    current_time = datetime.now()
+    messages = []
+
+    with shelve.open('static/db/chat') as db:
+        for key in sorted(db.keys(), reverse=True)[:limit]:  # Get the last 'limit' messages
+            message = db[key]
+            if 'timestamp' in message:
+                time_diff = current_time - datetime.strptime(message['timestamp'], '%Y-%m-%d %H:%M:%S')
+                seconds = time_diff.total_seconds()
+                
+                if seconds < 60:
+                    message['time_ago'] = 'Just now'
+                elif seconds < 3600:
+                    minutes = int(seconds / 60)
+                    message['time_ago'] = f'{minutes} minute{"s" if minutes != 1 else ""} ago'
+                elif seconds < 86400:
+                    hours = int(seconds / 3600)
+                    message['time_ago'] = f'{hours} hour{"s" if hours != 1 else ""} ago'
+                else:
+                    days = time_diff.days
+                    message['time_ago'] = f'{days} day{"s" if days != 1 else ""} ago'
+            messages.append(message)
+
+    return messages
+
+@app.route('/delete_message/<message_id>', methods=['POST'])
+@login_required
+def delete_message(message_id):
+    with shelve.open('static/db/chat') as db:
+        if message_id in db:
+            del db[message_id]  # Remove the message from the database
+            flash('Message deleted successfully.')
+        else:
+            flash('Message not found.')
+    return redirect('/chatroom')  # Redirect back to the chat room
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+@app.route('/delete_message/<message_id>', methods=['POST'])
+@login_required
+def delete_message(message_id):
+    with shelve.open('static/db/chat') as db:
+        if message_id in db:
+            del db[message_id]  # Remove the message from the database
+            flash('Message deleted successfully.')
+        else:
+            flash('Message not found.')
+    return redirect('/chatroom')  # Redirect back to the chat room
+
+@app.route('/inspect_chat')
+def inspect_chat():
+    with shelve.open('static/db/chat') as db:
+        messages = {key: db[key] for key in db.keys()}
+    return str(messages)  # Display the messages for inspection
 
 # Start the Flask application
 if __name__ == '__main__':

@@ -20,7 +20,17 @@
             </div>
         </article>
         <nav class="blog-nav">
-            <a href="/portfolio" class="link-button">Back to Portfolio</a>
+            <form action="/reflection/goto" method="POST" class="reflection-nav">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                <select name="day" required>
+                    <option value="" disabled selected>Select Day</option>
+                    {% for day_num in range(73, 79) %}
+                        <option value="{{ day_num }}">Day {{ day_num }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit" class="link-button">Go to Day</button>
+            </form>
+            <a href="/dashboard" class="link-button">Back to Dashboard</a>
         </nav>
     </main>
 

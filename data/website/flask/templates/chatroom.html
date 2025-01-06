@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Room</title>
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+    <header class="chat-header">
+        <h1>Chat Room</h1>
+        <a href="{{ url_for('dashboard') }}" class="link-button">Back to Dashboard</a>
+    </header>
+
+    <main class="chat-container">
+        <div class="messages">
+            {% for message in messages %}
+                <div class="message">
+                    <div class="message-profile">
+                        <img src="{{ url_for('static', filename='images/' + message.profile_pic) if message.profile_pic else url_for('static', filename='images/default_profile.png') }}" 
+                             alt="{{ message.username }}" 
+                             class="profile-pic-small">
+                    </div>
+                    <div class="message-content">
+                        <p>{{ message.content }}</p>
+                        <span class="message-time">{{ message.time_ago }} by {{ message.username }}</span>
+                        {% if session.username == 'admin' %}
+                            <form action="{{ url_for('delete_message', message_id=message.id) }}" method="POST" class="delete-form" onsubmit="return confirm('Are you sure you want to delete this message?');">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                                <button type="submit" class="danger">Delete</button>
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <button id="load-more" class="link-button">Load More</button>
+
+        <form action="{{ url_for('send_message') }}" method="POST" class="message-form">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            <input type="text" name="message" required placeholder="Type your message...">
+            <button type="submit" class="link-button">Send</button>
+        </form>
+    </main>
+
+    <script>
+        let currentLimit = 5; // Initial limit
+
+        document.getElementById('load-more').addEventListener('click', function() {
+            currentLimit += 5; // Increase limit by 5
+            fetch(`/chatroom?limit=${currentLimit}`)
+                .then(response => response.text())
+                .then(data => {
+                    const messagesContainer = document.querySelector('.messages');
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(data, 'text/html');
+                    const newMessages = doc.querySelector('.messages').innerHTML; // Get new messages
+                    messagesContainer.innerHTML = newMessages; // Update messages
+                })
+                .catch(error => console.error('Error fetching messages:', error)); // Log any errors
+        });
+    </script>
+</body>
+</html>

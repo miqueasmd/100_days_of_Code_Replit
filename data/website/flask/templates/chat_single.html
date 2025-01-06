@@ -1,0 +1,22 @@
+<div class="message">
+    <div class="message-user">
+        <span class="username">{{ message.username }}</span>
+    </div>
+    
+    <div class="message-profile">
+        <img src="{{ url_for('static', filename='images/' + message.profile_pic) if message.profile_pic else url_for('static', filename='images/default_profile.png') }}" 
+             alt="{{ message.username }}" 
+             class="profile-pic-small">
+    </div>
+    
+    <div class="message-content">
+        <p>{{ message.content }}</p>
+        <span class="message-time">{{ message.time_ago }}</span>
+        {% if session.username == 'admin' %}
+            <form action="{{ url_for('delete_message', message_id=message.id) }}" method="POST" class="delete-form">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                <button type="submit" class="danger">Delete</button>
+            </form>
+        {% endif %}
+    </div>
+</div>
