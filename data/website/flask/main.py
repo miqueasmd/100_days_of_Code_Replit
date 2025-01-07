@@ -8,6 +8,7 @@ from functools import wraps
 from dotenv import load_dotenv
 from deep_translator import GoogleTranslator
 from werkzeug.utils import secure_filename
+from flask_socketio import SocketIO, emit
 import shelve
 import os
 import time
@@ -16,6 +17,8 @@ load_dotenv()  # Load environment variables
 
 # Create a Flask application instance
 app = Flask(__name__, static_url_path="/static")
+
+socketio = SocketIO(app)
 
 app.secret_key = os.getenv('FLASK_SECRET_KEY')  # Get secret key from .env
 
@@ -554,7 +557,13 @@ def blog_delete(post_id):
 @login_required
 def chatroom():
     limit = request.args.get('limit', default=5, type=int)  # Get limit from query parameters
-    return render_template('chatroom.html', messages=get_messages(limit=limit))  # Pass limit to get_messages
+    offset = request.args.get('offset', default=0, type=int)  # Get offset from query parameters
+    messages, more_messages = get_messages(limit, offset)  # Fetch messages
+    return render_template('chatroom.html', messages=messages, more_messages=more_messages)  # Pass messages and flag to the template
+
+"""
+This function is currently commented out and not in use.
+It handles sending messages via POST requests.
 
 @app.route('/send_message', methods=['POST'])  # Ensure this route is defined
 @login_required
@@ -577,46 +586,66 @@ def send_message():
         }
 
     return redirect('/chatroom')  # Redirect back to the chat room
+"""
+@socketio.on('send_message')
+def handle_send_message(data):
+    message = data['message']
+    if not message:
+        return  # Optionally handle empty messages
 
-def get_messages(limit=5):
+    now = datetime.now()
+    timestamp = str(time.time())
+
+    with shelve.open('static/db/chat') as db:
+        db[timestamp] = {
+            'id': timestamp,  # Store the message ID
+            'username': session['username'],
+            'content': message,
+            'profile_pic': session.get('profile_pic', 'default_profile.png'),
+            'timestamp': now.strftime('%Y-%m-%d %H:%M:%S'),
+        }
+
+    # Broadcast the message to all clients
+    emit('receive_message', {
+        'id': timestamp,  # Include the message ID in the emitted data
+        'username': session['username'],
+        'content': message,
+        'profile_pic': session.get('profile_pic', 'default_profile.png'),
+        'timestamp': now.strftime('%Y-%m-%d %H:%M:%S')
+    }, broadcast=True)
+
+def get_messages(limit=5, offset=0):
     current_time = datetime.now()
     messages = []
+    more_messages = False
 
     with shelve.open('static/db/chat') as db:
-        for key in sorted(db.keys(), reverse=True)[:limit]:  # Get the last 'limit' messages
-            message = db[key]
-            if 'timestamp' in message:
-                time_diff = current_time - datetime.strptime(message['timestamp'], '%Y-%m-%d %H:%M:%S')
-                seconds = time_diff.total_seconds()
-                
-                if seconds < 60:
-                    message['time_ago'] = 'Just now'
-                elif seconds < 3600:
-                    minutes = int(seconds / 60)
-                    message['time_ago'] = f'{minutes} minute{"s" if minutes != 1 else ""} ago'
-                elif seconds < 86400:
-                    hours = int(seconds / 3600)
-                    message['time_ago'] = f'{hours} hour{"s" if hours != 1 else ""} ago'
-                else:
-                    days = time_diff.days
-                    message['time_ago'] = f'{days} day{"s" if days != 1 else ""} ago'
-            messages.append(message)
+        keys = sorted(db.keys(), reverse=True)  # Get all keys in reverse order
+        if offset < len(keys):
+            more_messages = True  # There are more messages to load
+            for key in keys[offset:offset + limit]:  # Get messages based on offset and limit
+                message = db[key]
+                if 'timestamp' in message:
+                    time_diff = current_time - datetime.strptime(message['timestamp'], '%Y-%m-%d %H:%M:%S')
+                    seconds = time_diff.total_seconds()
+                    
+                    if seconds < 60:
+                        message['time_ago'] = 'Just now'
+                    elif seconds < 3600:
+                        minutes = int(seconds / 60)
+                        message['time_ago'] = f'{minutes} minute{"s" if minutes != 1 else ""} ago'
+                    elif seconds < 86400:
+                        hours = int(seconds / 3600)
+                        message['time_ago'] = f'{hours} hour{"s" if hours != 1 else ""} ago'
+                    else:
+                        days = time_diff.days
+                        message['time_ago'] = f'{days} day{"s" if days != 1 else ""} ago'
+                messages.append(message)
 
-    return messages
+    # Sort messages from oldest to newest
+    messages.sort(key=lambda x: x['timestamp'])  # Assuming 'timestamp' is a string in a sortable format
 
-@app.route('/delete_message/<message_id>', methods=['POST'])
-@login_required
-def delete_message(message_id):
-    with shelve.open('static/db/chat') as db:
-        if message_id in db:
-            del db[message_id]  # Remove the message from the database
-            flash('Message deleted successfully.')
-        else:
-            flash('Message not found.')
-    return redirect('/chatroom')  # Redirect back to the chat room
-
-if __name__ == '__main__':
-    app.run(debug=True)
+    return messages, more_messages
 
 @app.route('/delete_message/<message_id>', methods=['POST'])
 @login_required
@@ -638,4 +667,5 @@ def inspect_chat():
 # Start the Flask application
 if __name__ == '__main__':
     # Run the Flask application with debug mode enabled for development
-    app.run(host='0.0.0.0', port=81, debug=True)
+    # app.run(host='0.0.0.0', port=81, debug=True) #without socketio
+    socketio.run(app, host='0.0.0.0', port=81, debug=True)

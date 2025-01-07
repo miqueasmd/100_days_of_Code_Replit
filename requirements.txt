@@ -14,6 +14,7 @@ deep-translator  # For language translation
 Flask-WTF         # For web forms and CSRF protection
 wtforms           # For web forms and CSRF protection
 email-validator   # For email validation
+flask_socketio     #For real-time communication updates
 
 # Additional security dependencies
 itsdangerous       # For secure session handling

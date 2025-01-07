@@ -156,7 +156,7 @@ This repository contains the daily challenges and projects completed as part of 
 | Day 86: Fully Functional Blog Engine | Developed a blog engine with features for adding and viewing posts, with a simple login system for the author. |
 | Day 87: Simplify Login Page for Blog Engine | Refined the login page to reduce code complexity and improve user experience. |
 | Day 88: Adapt Blog Engine for User Access | Modified the blog engine to allow public access to the blog while restricting admin features to the author. |
-| Day 89: Community Chat App | Created a chat application with user authentication, message display, and admin features for message deletion. |
+| Day 89: Community Chat App | Created a chat application with user authentication, messages display, real-time communication updates, and admin features for message deletion. |
 
 ## How to Run the Code
 

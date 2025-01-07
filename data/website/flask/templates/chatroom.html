@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat Room</title>
     <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
 </head>
 <body>
     <header class="chat-header">
@@ -13,7 +14,7 @@
     </header>
 
     <main class="chat-container">
-        <div class="messages">
+        <div class="messages" id="messages">
             {% for message in messages %}
                 <div class="message">
                     <div class="message-profile">
@@ -34,28 +35,69 @@
                 </div>
             {% endfor %}
         </div>
-        <button id="load-more" class="link-button">Load More</button>
 
-        <form action="{{ url_for('send_message') }}" method="POST" class="message-form">
+        <div class="button-group">
+            <button id="load-more" class="link-button" style="display: {{ 'none' if not more_messages else 'block' }};">Load More</button>
+            <button id="go-to-top" class="link-button" onclick="goToTop()">Go to Top</button>
+        </div>
+        
+        <form id="message-form" class="message-form">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
-            <input type="text" name="message" required placeholder="Type your message...">
-            <button type="submit" class="link-button">Send</button>
+            <input type="text" id="message-input" name="message" required placeholder="Type your message...">
+            <button type="submit" id="send-button" class="link-button">Send</button>
         </form>
     </main>
 
-    <script>
-        let currentLimit = 5; // Initial limit
+    <input type="hidden" id="more-messages" value="{{ more_messages }}">
 
+    <script>
+
+    function goToTop() {
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+        var socket = io();
+
+        // Send message on form submit
+        document.getElementById('message-form').onsubmit = function(e) {
+            e.preventDefault(); // Prevent the default form submission
+            var message = document.getElementById('message-input').value;
+            socket.emit('send_message', { message: message }); // Emit the message to the server
+            document.getElementById('message-input').value = ''; // Clear the input field
+        };
+
+        // Receive message from the server
+        socket.on('receive_message', function(data) {
+            var messageElement = document.createElement('div');
+            messageElement.classList.add('message');
+            messageElement.innerHTML = `
+                <div class="message-profile">
+                    <img src="{{ url_for('static', filename='images/default_profile.png') }}" alt="${data.username}" class="profile-pic-small">
+                </div>
+                <div class="message-content">
+                    <p>${data.content}</p>
+                    <span class="message-time">Just now by ${data.username}</span>
+                </div>
+            `;
+            document.getElementById('messages').appendChild(messageElement); // Append the new message to the bottom
+        });
+
+        // Load more messages
         document.getElementById('load-more').addEventListener('click', function() {
-            currentLimit += 5; // Increase limit by 5
-            fetch(`/chatroom?limit=${currentLimit}`)
+            let currentLimit = document.querySelectorAll('.message').length; // Get current number of messages
+            fetch(`/chatroom?limit=5&offset=${currentLimit}`)
                 .then(response => response.text())
                 .then(data => {
                     const messagesContainer = document.querySelector('.messages');
                     const parser = new DOMParser();
                     const doc = parser.parseFromString(data, 'text/html');
                     const newMessages = doc.querySelector('.messages').innerHTML; // Get new messages
-                    messagesContainer.innerHTML = newMessages; // Update messages
+                    
+                    if (newMessages.trim() === "") {
+                        // If no new messages are returned
+                        document.getElementById('load-more').style.display = 'none'; // Hide the button
+                    } else {
+                        messagesContainer.insertAdjacentHTML('afterbegin', newMessages); // Prepend new messages
+                    }
                 })
                 .catch(error => console.error('Error fetching messages:', error)); // Log any errors
         });

@@ -125,6 +125,13 @@ html, body {
     padding: 20px; /* Adds padding inside the links section */
   }
   
+  /* Group of buttons */
+  .button-group {
+    display: flex;
+    justify-content: space-between; /* Adjusts buttons to each end */
+    padding: 10px; /* Adds some padding around the buttons */
+}
+
   /* Styling for individual link buttons */
   .link-button {
     padding: 15px; /* Adds padding inside the link button */
@@ -554,17 +561,25 @@ form h1 {
   margin-right: 10px; /* Space between username and profile picture */
 }
 
-/* Profile picture styling */
-.message-profile {
-  margin-right: 10px; /* Space between profile picture and message content */
-}
-
 /* Profile picture size */
 .profile-pic-small {
-  width: 40px; /* Fixed width */
-  height: 40px; /* Fixed height */
-  border-radius: 50%; /* Circular shape */
+  width: 80px; /* Adjust width */
+  height: 80px; /* Adjust height */
+  border-radius: 50%; /* Keep the image circular */
   object-fit: cover; /* Maintain aspect ratio */
+}
+
+/* Circle background */
+.message-profile {
+  width: 90px; /* Width of the circular background */
+  height: 90px; /* Height of the circular background */
+  border-radius: 50%; /* Make it circular */
+  display: flex; /* Center the image */
+  justify-content: center; /* Center the image horizontally */
+  align-items: center; /* Center the image vertically */
+  border: 2px solid black; /* Small black border */
+  margin-right: 20px; /* Space between the image and the message */
+  background-color: white; /* Background color for the circle */
 }
 
 /* Message content section */
