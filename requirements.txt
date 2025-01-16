@@ -1,35 +1,36 @@
 # Core dependencies
-python-dotenv # For environment variables
-pygame # For music player functionality
-pynput # For keyboard input handling
-csv # Built-in, for CSV file operations
-pillow # For image processing
-colorama  # For better color support across platforms
-flask # For web server functionality
-flask-login # For user authentication
-werkzeug # For utilities including password hashing and file uploads
+python-dotenv     # For environment variables
+pygame            # For music player functionality  
+pynput            # For keyboard input handling
+csv               # Built-in, for CSV file operations
+pillow            # For image processing
+colorama          # For better color support across platforms
+flask             # For web server functionality
+flask-login       # For user authentication
+werkzeug          # For utilities including password hashing and file uploads
 jinja2            # For HTML templating in Flask
 flask-sqlalchemy  # For database management
-deep-translator  # For language translation
+deep-translator   # For language translation
 Flask-WTF         # For web forms and CSRF protection
 wtforms           # For web forms and CSRF protection
 email-validator   # For email validation
-flask_socketio     #For real-time communication updates
+flask_socketio    # For real-time communication updates
+geopy             # For geolocation
 
 # Additional security dependencies
-itsdangerous       # For secure session handling
-flask-session      # For server-side sessions
-flask-talisman     # For security headers
+itsdangerous      # For secure session handling
+flask-session     # For server-side sessions
+flask-talisman    # For security headers
 
 # Built-in modules used
-# datetime  - For date and time operations
-# tkinter   - For GUI development
-# shelve    - For simple database operations
-# os        - For file and system operations
-# time      - For delays and timing
-# csv       - For CSV file operations
-# random    - For random number generation
-# sys       - For system operations
-# hashlib   - For hashing operations
-# hmac      - For keyed-hashing for message authentication
-# secrets   - For generating secure tokens
+# datetime        # For date and time operations
+# tkinter         # For GUI development
+# shelve          # For simple database operations
+# os              # For file and system operations
+# time            # For delays and timing
+# csv             # For CSV file operations
+# random          # For random number generation
+# sys             # For system operations
+# hashlib         # For hashing operations
+# hmac            # For keyed-hashing for message authentication
+# secrets         # For generating secure tokens
