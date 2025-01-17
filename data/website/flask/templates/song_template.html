@@ -1,0 +1,32 @@
+<!--
+Song Display Template
+
+Displays individual song information including:
+- Ranking badge
+- Song title
+- Artist name
+- Album name
+- Release date
+- Popularity score
+- Spotify embed player
+-->
+
+<!-- Template for rendering each song -->
+<div class="song-container rank-{{ rank }}">
+    <div class="rank-badge">#{{ rank }}</div>
+    <h3>🎵 {{ name }}</h3>
+    <p>👤 {{ artist }}</p>
+    <p>💿 {{ album }}</p>
+    <p>📅 {{ release_date }}</p>
+    <p>🔥 Popularity: {{ popularity }}</p>
+    <div class="spotify-embed">
+        <iframe 
+            src="{{ embed_url }}"
+            width="100%" 
+            height="80" 
+            frameborder="0" 
+            allowtransparency="true" 
+            allow="encrypted-media">
+        </iframe>
+    </div>
+</div>

@@ -5,79 +5,97 @@ This repository contains the daily challenges and projects completed as part of 
 ## Features
 
 ### Game Development
-- Interactive command-line games and quizzes
-- Random number generation and game logic
-- Score tracking and statistics
-- Top Trumps game mechanics
-- Bingo card generation and gameplay
-- Custom monster creation (MokeBeast)
-- Character generation systems
-- Visual novel engine
-- Guess Who game implementation
+- Interactive command-line games
+  - Random number generation 
+  - Score tracking and statistics
+  - Top Trumps card game
+  - Bingo generation and gameplay
+- Character Systems
+  - MokeBeast monster creation
+  - RPG character generation
+  - Visual novel engine
+  - Guess Who implementation
 
 ### User Interface
-- Text-based user interfaces with color support
-- Color text and rainbow effects
-- Multi-option menu systems
-- Input validation and error handling
-- GUI development with tkinter
-- Event-driven programming
-- HTML and CSS responsive design
-- Flask web interface
-- Dynamic content routing
+- Command Line Interfaces
+  - Color text and effects
+  - Multi-option menus
+  - Input validation
+- Graphical Interfaces
+  - Tkinter GUI development
+  - Event-driven programming
+  - Calculator interface
+- Web Interfaces
+  - HTML/CSS responsive design
+  - Flask web framework
+  - Dynamic content routing
 
 ### Data Management
-- File handling and data persistence
-- Auto-save and auto-load functionality
-- CSV file handling
-- Backup systems
-- File organization
-- Data structures (lists, dictionaries)
-- Database operations with shelve
-- Password hashing and salting
-- User authentication systems
-- Multi-user login handling
-- API data fetching and storage
-- JSON data handling
-- Image downloading and storage
-- Local database for jokes storage
-- Geolocation data processing
-
-### Tools and Applications
-- String manipulation and text formatting
-- Mathematical calculations and calculator GUI
-- Time and date handling
-- Event countdown system
-- Password-based authentication
-- Social media simulation (Twitter clone)
-- Private diary system
-- Code utilities library
-- Portfolio website
-- Link tree page
-- Blog system with templates
-- Reflection system
-- Dynamic URL routing
-- Random user profile generator
-- Dad jokes management system
-- Weather forecast application
+- File Operations
+  - CSV and JSON handling
+  - Auto-save/load functionality
+  - Backup systems
+  - File organization
+- Database Systems
+  - Shelve and SQLite integration
+  - Local storage solutions
+  - Data structures optimization
+- Security
+  - Password hashing/salting
+  - User authentication
+  - Session management
 
 ### Web Development
-- HTML5 and CSS3
-- Flask web framework
-- Template systems
-- Static file serving
-- Dynamic route handling
-- User session management
-- Responsive web design
-- Dark theme implementation
-- Login and signup forms, session management, and "I'm Not a Robot" verification.
-- Webpages that display content based on the URL ending.
-- Support for dynamic theme changes in the blogging engine.
-- User authentication, message display, and admin features for message deletion.
-- External API integration (randomuser.me, icanhazdadjoke, Open-Meteo)
-- Weather data visualization
-- Timezone handling and formatting
-- Geolocation services integration
+- Frontend
+  - HTML5/CSS3 responsive design
+  - JavaScript interactivity
+  - Dynamic theming
+  - Form validation
+- Backend
+  - Flask routing and templates
+  - Session handling
+  - Database integration
+  - WebSocket communication
+- Security
+  - Authentication systems
+  - CORS configuration
+  - Error handling
+  - Access control
+
+### API Integration
+- External Services
+  - Random user profiles
+  - Dad jokes platform
+  - Weather data services
+  - Spotify music platform
+- Implementation Features
+  - OAuth authentication
+  - Real-time updates
+  - Data caching
+  - File management
+- Specialized Functions
+  - Weather visualization
+  - Music discovery
+  - Geolocation services
+  - Multi-language support
+
+### Tools and Applications
+- Utility Applications
+  - Time/date handlers
+  - Event countdown
+  - Calculator
+  - Code library
+- Web Applications
+  - Portfolio site
+  - Link tree
+  - Blog engine
+  - Weather dashboard
+- Social Features
+  - Chat system
+  - Twitter clone
+  - Private diary
+  - User profiles
+
 
 ## Challenges Completed
 
@@ -172,6 +190,7 @@ This repository contains the daily challenges and projects completed as part of 
 | Day 90: Random User Generator | Used randomuser.me API to pull data for 10 users and save their profile pictures locally using JSON data management and API requests. |
 | Day 91: Dad Jokes Manager | Built a program that fetches random jokes from icanhazdadjoke API, allows saving jokes to a database, and viewing saved jokes. Features include joke management and persistent storage. |
 | Day 92: Weather App | Created a weather app using the Open-Meteo API. Features include city search with geolocation, timezone selection, and displaying current weather conditions with temperature and weather description. |
+| Day 93: Music Time Machine | Spotify API integration to discover popular songs by year and country |
 
 ## How to Run the Code
 

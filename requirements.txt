@@ -16,6 +16,14 @@ wtforms           # For web forms and CSRF protection
 email-validator   # For email validation
 flask_socketio    # For real-time communication updates
 geopy             # For geolocation
+requests          # For HTTP requests to Spotify API
+
+# Spotify API specific
+spotipy           # Spotify API wrapper (optional)
+
+# Logging and Debug
+logging           # For application logging
+python-dotenv     # For environment variables
 
 # Additional security dependencies
 itsdangerous      # For secure session handling

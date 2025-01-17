@@ -12,6 +12,8 @@ from flask_socketio import SocketIO, emit
 import shelve
 import os
 import time
+import requests
+from requests.auth import HTTPBasicAuth
 
 load_dotenv()  # Load environment variables
 
@@ -663,6 +665,216 @@ def inspect_chat():
     with shelve.open('static/db/chat') as db:
         messages = {key: db[key] for key in db.keys()}
     return str(messages)  # Display the messages for inspection
+
+
+import logging
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
+
+COUNTRIES = {
+    'US': 'United States',
+    'GB': 'United Kingdom',
+    'ES': 'Spain',
+    'FR': 'France',
+    'DE': 'Germany',
+    'IT': 'Italy',
+    'BR': 'Brazil',
+    'MX': 'Mexico',
+    'JP': 'Japan',
+    'AU': 'Australia'
+}
+
+def get_spotify_token():
+    """Get Spotify access token"""
+    try:
+        # Update environment variable names to match .env file
+        client_id = os.getenv('CLIENT_ID')
+        client_secret = os.getenv('CLIENT_SECRET')
+        
+        if not client_id or not client_secret:
+            logger.error("Missing Spotify credentials")
+            raise ValueError("Spotify credentials not found")
+
+        logger.debug("Attempting Spotify authentication...")
+        response = requests.post(
+            "https://accounts.spotify.com/api/token",
+            data={"grant_type": "client_credentials"},
+            auth=HTTPBasicAuth(client_id, client_secret)
+        )
+        
+        if response.status_code != 200:
+            logger.error(f"Auth failed: {response.status_code}")
+            raise ValueError("Authentication failed")
+            
+        token = response.json()["access_token"]
+        logger.debug("Successfully obtained Spotify token")
+        return token
+        
+    except Exception as e:
+        logger.exception("Token generation failed")
+        raise
+
+def get_spotify_tracks(year, market='ES', token=None, offset=0, limit=10):
+    """
+    Fetch and sort tracks from Spotify API by popularity.
+    
+    Args:
+        year (str): Year to search for tracks
+        market (str): Two-letter country code (default: 'ES')
+        token (str): Spotify API token
+        offset (int): Starting point for pagination
+        limit (int): Number of tracks to return
+    
+    Returns:
+        dict: JSON response with sorted tracks by popularity
+    """
+    if not token:
+        token = get_spotify_token()
+    
+    headers = {"Authorization": f"Bearer {token}"}
+    
+    # Get tracks from Spotify API
+    params = {
+        'q': f'year:{year}',
+        'type': 'track',
+        'market': market,
+        'limit': 50  # Get more tracks to sort
+    }
+    
+    logger.debug(f"Fetching tracks with params: {params}")
+    response = requests.get("https://api.spotify.com/v1/search", headers=headers, params=params)
+    
+    if response.status_code != 200:
+        logger.error(f"API failed: {response.status_code}")
+        raise ValueError("API request failed")
+    
+    data = response.json()
+    if 'tracks' in data and 'items' in data['tracks']:
+        tracks = data['tracks']['items']
+        
+        # Filter out duplicates by track ID
+        unique_tracks = {track['id']: track for track in tracks}.values()
+        
+        # Sort by popularity
+        sorted_tracks = sorted(unique_tracks, key=lambda x: x.get('popularity', 0), reverse=True)
+        
+        # Get slice based on offset and limit
+        start = offset
+        end = offset + limit
+        selected_tracks = sorted_tracks[start:end]
+        
+        # Log selected tracks
+        logger.debug(f"Selected tracks ({market}):")
+        for idx, track in enumerate(selected_tracks, 1):
+            logger.debug(f"{idx}. {track['name']} ({track['popularity']}) - {track['id']}")
+        
+        data['tracks']['items'] = selected_tracks
+    
+    return data
+
+@app.route('/music', methods=['GET', 'POST'])
+def music():
+
+    """
+    Handle music search page requests.
+    
+    GET: Display empty search form
+    POST: Process form submission and display results
+    
+    Form parameters:
+    - year: Year to search (1900-2024)
+    - market: Two-letter country code
+    - limit: Number of songs to display
+    """
+        
+    if request.method == 'POST':
+        year = request.form.get('year', '2024')
+        market = request.form.get('market', 'ES')  # Get market from form
+        limit = int(request.form.get('limit', 10))
+        logger.debug(f"Search params - Year: {year}, Market: {market}, Limit: {limit}")
+
+        try:
+            token = get_spotify_token()
+            data = get_spotify_tracks(year, market=market, token=token, limit=limit)
+            
+            songs_html = ""
+            for idx, track in enumerate(data['tracks']['items'], 1):
+                # Add embed URL to track data
+                track['embed_url'] = f"https://open.spotify.com/embed/track/{track['id']}"
+                
+                song_html = render_template('song_template.html',
+                    rank=idx,
+                    name=track['name'],
+                    artist=track['artists'][0]['name'],
+                    album=track['album']['name'],
+                    release_date=track['album']['release_date'],
+                    popularity=track.get('popularity', 'N/A'),
+                    embed_url=track['embed_url']
+                )
+                songs_html += song_html
+
+            return render_template('music.html', 
+                                   songs=songs_html, 
+                                   value=year, 
+                                   selected_market=market,
+                                   selected_limit=limit,  # Pass selected limit to template
+                                   countries=COUNTRIES)
+                                
+        except Exception as e:
+            logger.exception("Error processing request")
+            flash(str(e))
+            return render_template('music.html', 
+                                   songs="", 
+                                   value=year, 
+                                   selected_market=market,
+                                   selected_limit=limit,
+                                   countries=COUNTRIES)
+    
+    return render_template('music.html', 
+                           songs="", 
+                           value="2024", 
+                           selected_market="ES",
+                           selected_limit=10,
+                           countries=COUNTRIES)
+
+
+@app.route('/load_more', methods=['POST'])
+def load_more_songs():
+
+    """
+    Handle AJAX requests for loading additional songs.
+    
+    Form parameters:
+    - year: Current year selection
+    - market: Current country selection
+    - offset: Number of songs already loaded
+    - limit: Number of additional songs to load
+    """
+        
+    year = request.form.get('year')
+    market = request.form.get('market', 'ES')  # Get market from form data
+    offset = int(request.form.get('offset', 0))
+    limit = int(request.form.get('limit', 10))
+    
+    logger.debug(f"Load more - Year: {year}, Market: {market}, Offset: {offset}, Limit: {limit}")
+    
+    token = get_spotify_token()
+    data = get_spotify_tracks(year, market=market, token=token, offset=offset, limit=limit)
+    
+    songs_html = ""
+    for idx, track in enumerate(data['tracks']['items'], offset + 1):
+        track['embed_url'] = f"https://open.spotify.com/embed/track/{track['id']}"
+        song_html = render_template('song_template.html',
+            rank=idx,
+            name=track['name'],
+            artist=track['artists'][0]['name'],
+            album=track['album']['name'],
+            release_date=track['album']['release_date'],
+            popularity=track.get('popularity', 'N/A'),
+            embed_url=track['embed_url']
+        )
+        songs_html += song_html
+    return songs_html
 
 # Start the Flask application
 if __name__ == '__main__':

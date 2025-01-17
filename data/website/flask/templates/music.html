@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Music Time Machine - Search Interface
+    
+    Features:
+    - Year selection (1900-2024)
+    - Country selection
+    - Number of songs to display
+    - Dynamic song loading
+    - Responsive grid layout
+    -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Search</title>
+    <!-- Linking external CSS file -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="content-container">
+        <h1>🎵 Music Time Machine</h1>
+        <!-- Search form for year, country, and number of songs -->
+        <div class="search-form">
+            <form method="POST" id="song-form">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                
+                 <!-- Year selection dropdown -->
+                <div class="form-group">
+                    <label for="year">Select Year:</label>
+                    <select id="year" name="year" required>
+                        {% for y in range(2024, 1899, -1) %}
+                        <option value="{{ y }}" {% if y|string == value %}selected{% endif %}>{{ y }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+    
+                 <!-- Country selection dropdown -->
+
+                <div class="form-group">
+                    <label for="market">Select Country:</label>
+                    <select id="market" name="market">
+                        {% for code, name in countries.items() %}
+                        <option value="{{ code }}" {% if code == selected_market %}selected{% endif %}>
+                            {{ name }} ({{ code }})
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- Number of songs selection dropdown -->
+                <div class="form-group">
+                    <label for="limit">Number of Songs:</label>
+                    <select id="limit" name="limit" onchange="updateNumberOfSongs()">
+                        {% for i in range(5, 51, 5) %}
+                        <option value="{{ i }}" {% if i == selected_limit %}selected{% endif %}>{{ i }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            
+                <!-- Hidden offset field -->
+                <input type="hidden" id="offset" name="offset" value="0">
+                
+                <div class="button-group">
+                    <button type="submit" class="link-button">Search Songs</button>
+                    <a href="/dashboard" class="link-button">Back to Dashboard</a>
+                </div>
+            </form>
+            
+        </div>
+
+        <div class="songs-container">
+            {{ songs|safe }}
+        </div>
+    </div>
+
+    <!-- Load More and Go to Top buttons -->
+    <div class="button-group">
+        <button id="load-more-btn" onclick="loadMoreSongs()" class="link-button">Load More</button>
+        <button id="go-to-top" class="link-button" onclick="goToTop()">Go to Top</button>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <section class="support">
+            <h2><a href="https://ko-fi.com/miqueasmd" target="_blank">☕ Support Me</a></h2> <!-- Link to Ko-fi -->
+            <p>If you like my work, consider supporting my studies!</p>
+            <p>Your contributions will help cover fees and materials for my <strong>Computer Science and Engineering studies at UoPeople</strong> starting in September 2025.</p>
+            <p>Every little bit helps—you can donate from as little as $1.</p>
+            <!-- Button for donations -->
+            <a href="https://ko-fi.com/miqueasmd" class="ko-fi" target="_blank">
+                <img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Support me on Ko-fi"> <!-- Ko-fi support button -->
+            </a>
+        </section>
+
+        <section class="acknowledgements">
+            <h2>Acknowledgements</h2>
+            <p>This project is inspired by the 100 Days of Code challenge on Replit. Please visit 
+                <a href="https://replit.com/">Replit</a> for more information and resources.
+            </p>
+        </section>
+    </footer>
+
+    <!-- JavaScript for form handling and dynamic song loading -->
+     
+    <script>
+        // Smooth scroll to top functionality
+        function goToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    
+        // Function to handle "Load More" button click
+        async function loadMoreSongs() {
+            // Get form and input elements
+            const formData = new FormData(document.getElementById('song-form'));
+            const offsetInput = document.getElementById('offset');
+            const limitInput = document.getElementById('limit');
+            const marketSelect = document.getElementById('market');
+            
+            // Get current values
+            let offset = parseInt(offsetInput.value, 10);
+            const limit = parseInt(limitInput.value, 10);
+            const market = marketSelect.value;
+            
+            // Update offset for next batch
+            offset += limit;
+            
+            // Update form data
+            formData.set('offset', offset);
+            formData.set('limit', limit);
+            formData.set('market', market);
+
+            try {
+                // Make request
+                const response = await fetch('/load_more', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                // Update DOM
+                const newSongsHtml = await response.text();
+                document.querySelector('.songs-container').innerHTML += newSongsHtml;
+                offsetInput.value = offset;
+
+                // Scroll to new content
+                const lastSong = document.querySelector('.songs-container').lastElementChild;
+                lastSong.scrollIntoView({ behavior: 'smooth' });
+
+            } catch (error) {
+                console.error('Load more failed:', error);
+                alert('Error loading more songs. Please try again.');
+            }
+        }
+    
+        // Function to update the dropdown for the number of songs
+        function updateNumberOfSongs() {
+            const limitInput = document.getElementById('limit');
+            const selectedLimit = limitInput.value;
+    
+            // Update the form submission to include the selected limit
+            const form = document.getElementById('song-form');
+            form.action = `/music?limit=${selectedLimit}`;
+        }
+    </script>
+    
+
+</body>
+</html>

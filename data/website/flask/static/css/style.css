@@ -125,12 +125,33 @@ html, body {
     padding: 20px; /* Adds padding inside the links section */
   }
   
-  /* Group of buttons */
-  .button-group {
-    display: flex;
-    justify-content: space-between; /* Adjusts buttons to each end */
-    padding: 10px; /* Adds some padding around the buttons */
+/* Style for the button group */
+.button-group {
+  display: flex;
+  gap: 10px; /* Space between the buttons */
+  justify-content: center; /* Center align the buttons */
+  margin-top: 20px;
 }
+
+/* Style for the Back to Dashboard button */
+.back-button {
+  background-color: #1c2333;
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  border: 2px solid #4a9eff;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  display: inline-block;
+}
+
+.back-button:hover {
+  background-color: #4a9eff;
+  color: #1c2333;
+}
+
 
   /* Styling for individual link buttons */
   .link-button {
@@ -609,3 +630,85 @@ form h1 {
   border: 1px solid #ddd;          /* Light border */
   border-radius: 4px;              /* Rounded corners */
 }
+
+
+/* Grid layout for song display
+   - 2 columns for desktop
+   - 1 column for mobile (<768px) */
+
+/* Music page styles */
+.song-container {
+  background: #1c2333;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.song-title {
+  color: #4a9eff;
+  margin-bottom: 15px;
+  font-family: monospace;
+}
+
+.audio-player {
+  width: 100%;
+  margin: 10px 0;
+}
+
+.audio-player audio {
+  width: 100%;
+  background: #0e1525;
+  border-radius: 4px;
+}
+
+.search-form {
+  margin: 30px 0;
+  text-align: center;
+}
+
+/* Simple grid layout */
+.songs-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+.spotify-embed {
+  margin-top: 10px;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Individual song card styling */
+.song-container {
+  background: #1c2333;
+  color: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin: 10px 0;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.rank-badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: #4a9eff;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+.song-container h3 {
+  margin-top: 0;
+  color: #4a9eff;
+}
+
+.song-container audio {
+  width: 100%;
+  margin-top: 10px;
+}
+
