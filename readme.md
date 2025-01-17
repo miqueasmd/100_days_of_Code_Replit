@@ -1,6 +1,6 @@
-# 100 Days of Code - Replit
+# 100 Days of Code Challenge
 
-This repository contains the daily challenges and projects completed as part of the 100 Days of Code challenge on Replit.
+This repository contains the daily challenges and projects completed as part of the 100 Days of Code challenge on Replit. Additional features and functionalities have been implemented, along with code adjustments to ensure local functionality.
 
 ## Features
 
@@ -37,6 +37,11 @@ This repository contains the daily challenges and projects completed as part of 
 - Password hashing and salting
 - User authentication systems
 - Multi-user login handling
+- API data fetching and storage
+- JSON data handling
+- Image downloading and storage
+- Local database for jokes storage
+- Geolocation data processing
 
 ### Tools and Applications
 - String manipulation and text formatting
@@ -52,6 +57,9 @@ This repository contains the daily challenges and projects completed as part of 
 - Blog system with templates
 - Reflection system
 - Dynamic URL routing
+- Random user profile generator
+- Dad jokes management system
+- Weather forecast application
 
 ### Web Development
 - HTML5 and CSS3
@@ -66,6 +74,10 @@ This repository contains the daily challenges and projects completed as part of 
 - Webpages that display content based on the URL ending.
 - Support for dynamic theme changes in the blogging engine.
 - User authentication, message display, and admin features for message deletion.
+- External API integration (randomuser.me, icanhazdadjoke, Open-Meteo)
+- Weather data visualization
+- Timezone handling and formatting
+- Geolocation services integration
 
 ## Challenges Completed
 
@@ -157,6 +169,9 @@ This repository contains the daily challenges and projects completed as part of 
 | Day 87: Simplify Login Page for Blog Engine | Refined the login page to reduce code complexity and improve user experience. |
 | Day 88: Adapt Blog Engine for User Access | Modified the blog engine to allow public access to the blog while restricting admin features to the author. |
 | Day 89: Community Chat App | Created a chat application with user authentication, messages display, real-time communication updates, and admin features for message deletion. |
+| Day 90: Random User Generator | Used randomuser.me API to pull data for 10 users and save their profile pictures locally using JSON data management and API requests. |
+| Day 91: Dad Jokes Manager | Built a program that fetches random jokes from icanhazdadjoke API, allows saving jokes to a database, and viewing saved jokes. Features include joke management and persistent storage. |
+| Day 92: Weather App | Created a weather app using the Open-Meteo API. Features include city search with geolocation, timezone selection, and displaying current weather conditions with temperature and weather description. |
 
 ## How to Run the Code
 
