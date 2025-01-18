@@ -90,6 +90,11 @@ This repository contains the daily challenges and projects completed as part of 
   - Content extraction
   - Error recovery
   - Regional format adaptation
+- Music Integration
+  - Spotify API connection
+  - Track discovery
+  - Embedded players
+  - Cross-API recommendations
   
 
 ### Tools and Applications
@@ -204,7 +209,8 @@ This repository contains the daily challenges and projects completed as part of 
 | Day 91: Dad Jokes Manager | Built a program that fetches random jokes from icanhazdadjoke API, allows saving jokes to a database, and viewing saved jokes. Features include joke management and persistent storage. |
 | Day 92: Weather App | Created a weather app using the Open-Meteo API. Features include city search with geolocation, timezone selection, and displaying current weather conditions with temperature and weather description. |
 | Day 93: Music Time Machine | Spotify API integration to discover popular songs by year and country |
-| Day 94: News Summarizer | Built a command-line news aggregator that fetches top headlines using NewsAPI and generates summaries using OpenAI's GPT model. Features country selection, error handling, and formatted output. Added a flexible news aggregator supporting multiple countries and languages, with AI-powered translation and summarization |
+| Day 94: News Summarizer | Built a command-line news aggregator that fetches top headlines using NewsAPI and generates summaries using OpenAI's GPT model. Features country selection, error handling, and formatted output. Added supporting multiple countries and languages, with AI-powered translation and summarization |
+| Day 95: Daily Track Generator | Created a music recommendation system that converts news headlines into song suggestions using NewsAPI, OpenAI for summarization, and Spotify API for track discovery. Features embedded players and cross-API integration |
 
 ## How to Run the Code
 
