@@ -38,7 +38,8 @@ This repository contains the daily challenges and projects completed as part of 
 - Database Integration
   - SQLite and Shelve
   - Data structure optimization
-  - Local storage solutions
+  - Event deduplication
+  - Persistent storage
 - Security Features
   - Password hashing/salting
   - User authentication
@@ -46,45 +47,43 @@ This repository contains the daily challenges and projects completed as part of 
   - Access control
   - CORS configuration
 
+### Web Scraping & Automation
+- Event Scraping
+  - BeautifulSoup integration
+  - URL validation
+  - Content extraction
+  - Link fixing
+- Monitoring Systems
+  - Content filtering
+  - Automated notifications
+  - Data validation
+  - Task scheduling
+
 ### Web Development
-- Frontend Development
-  - HTML5/CSS3 design
-  - JavaScript integration
-  - Dynamic theming
-  - Responsive layouts
+[...existing Frontend Development section...]
 - Backend Systems
   - Flask framework
   - Routing and templates
   - Database integration
   - WebSocket support
+  - Error handling
 
-### API Integration and Content Processing
+### API Integration
 - External Services
   - Weather API integration
   - Spotify music platform
   - News services
   - User profiles
-- Content Management
-  - Multi-language support
-  - Article summarization
-  - Text categorization
-  - Content extraction
-- AI Integration
-  - OpenAI GPT models
-  - Text summarization
-  - Context-aware responses
-  - Language processing
 - Implementation
   - OAuth authentication
   - API key management
   - Rate limiting
-  - Error handling
   - Data caching
 
-### Automation & Scheduling
-- Email Systems
+### Automation & Email Systems
+- Email Features
   - SMTP integration
-  - HTML email formatting
+  - HTML formatting
   - Scheduled delivery
   - Error handling
 - Content Management
@@ -210,6 +209,7 @@ This repository contains the daily challenges and projects completed as part of 
 | Day 96: Tech News Scraper | Built a web scraper for Hacker News using BeautifulSoup. Features category filtering, content extraction, and AI-powered summarization |
 | Day 97: Wikipedia Summarizer | Created a tool that scrapes Wikipedia articles and generates concise summaries using OpenAI API, including references management |
 | Day 98: Motivational Emailer | Built an automated email system that sends scheduled motivational quotes using Gmail SMTP, featuring quote randomization and HTML formatting. |
+| Day 99: Events Web Scraper | Created web scraper that monitors websites for events, stores them in a local database, and sends email notifications |
 
 ## How to Run the Code
 

@@ -1,51 +1,49 @@
 # Core dependencies
-python-dotenv     # For environment variables
+python-dotenv     # For environment variables and config
 pygame            # For music player functionality  
 pynput            # For keyboard input handling
-csv               # Built-in, for CSV file operations
 pillow            # For image processing
 colorama          # For better color support across platforms
-flask             # For web server functionality
-flask-login       # For user authentication
-werkzeug          # For utilities including password hashing and file uploads
-jinja2            # For HTML templating in Flask
-flask-sqlalchemy  # For database management
-deep-translator   # For language translation
-Flask-WTF         # For web forms and CSRF protection
-wtforms           # For web forms and CSRF protection
-email-validator   # For email validation
-flask_socketio    # For real-time communication updates
-geopy             # For geolocation
-requests          # For HTTP requests
 schedule          # For scheduling tasks
 psutil            # For system monitoring
 wmi               # For Windows Management Instrumentation
+email-validator   # For email validation
 
-# Spotify API specific
-spotipy           # Spotify API wrapper
-
-# API Integration
-openai            # For OpenAI GPT integration
-beautifulsoup4    # For web scraping
-
-# Logging and Debug
-logging           # For application logging
-python-dotenv     # For environment variables
-
-# Additional security dependencies
-itsdangerous      # For secure session handling
+# Web Framework
+flask             # For web server functionality
+flask-login       # For user authentication
+werkzeug          # For utilities including password hashing
+jinja2            # For HTML templating
+flask-sqlalchemy  # For database management
+Flask-WTF         # For web forms and CSRF protection
+wtforms           # For form validation
+flask_socketio    # For real-time updates
 flask-session     # For server-side sessions
 flask-talisman    # For security headers
 
+# API Integration
+requests          # For HTTP requests
+spotipy           # Spotify API wrapper
+openai            # For OpenAI GPT integration
+beautifulsoup4    # For web scraping
+deep-translator   # For language translation
+geopy            # For geolocation
+
+# Security
+itsdangerous      # For secure session handling
+
 # Built-in modules used
-# datetime        # For date and time operations
+# datetime        # For date/time operations
 # tkinter         # For GUI development
 # shelve          # For simple database operations
-# os              # For file and system operations
+# os              # For file operations
 # time            # For delays and timing
-# csv             # For CSV file operations
-# random          # For random number generation
+# csv             # For CSV operations
+# random          # For randomization
 # sys             # For system operations
-# hashlib         # For hashing operations
-# hmac            # For keyed-hashing for message authentication
-# secrets         # For generating secure tokens
+# hashlib         # For hashing
+# hmac            # For message authentication
+# secrets         # For secure tokens
+# smtplib         # For sending emails
+# email           # For email composition
+# logging         # For application logging
