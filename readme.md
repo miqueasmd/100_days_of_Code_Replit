@@ -81,12 +81,29 @@ This repository contains the daily challenges and projects completed as part of 
   - Error handling
   - Data caching
 
+### Automation & Scheduling
+- Email Systems
+  - SMTP integration
+  - HTML email formatting
+  - Scheduled delivery
+  - Error handling
+- Content Management
+  - Quote randomization
+  - File reading/parsing
+  - Content formatting
+  - Text processing
+- Task Scheduling
+  - Time-based triggers
+  - Interval management
+  - Job queuing
+  - Task monitoring
+
 ### Tools and Applications
 - Utility Tools
   - Time/date handlers
   - Calculators
   - Event systems
-  - Code utilities
+  - Email automation
 - Web Applications
   - Portfolio sites
   - Blog engines
@@ -192,6 +209,7 @@ This repository contains the daily challenges and projects completed as part of 
 | Day 95: Daily Track Generator | Created a music recommendation system that converts news headlines into song suggestions using NewsAPI, OpenAI for summarization, and Spotify API for track discovery. Features embedded players and cross-API integration |
 | Day 96: Tech News Scraper | Built a web scraper for Hacker News using BeautifulSoup. Features category filtering, content extraction, and AI-powered summarization |
 | Day 97: Wikipedia Summarizer | Created a tool that scrapes Wikipedia articles and generates concise summaries using OpenAI API, including references management |
+| Day 98: Motivational Emailer | Built an automated email system that sends scheduled motivational quotes using Gmail SMTP, featuring quote randomization and HTML formatting. |
 
 ## How to Run the Code
 
