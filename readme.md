@@ -38,71 +38,72 @@ This repository contains the daily challenges and projects completed as part of 
 - Database Integration
   - SQLite and Shelve
   - Data structure optimization
-  - Event deduplication
   - Persistent storage
+  - Query optimization
 - Security Features
   - Password hashing/salting
   - User authentication
   - Session management
   - Access control
-  - CORS configuration
 
-### Web Scraping & Automation
-- Event Scraping
+### Web Scraping & Monitoring
+- Content Scraping
   - BeautifulSoup integration
   - URL validation
   - Content extraction
   - Link fixing
+- Price Tracking
+  - Multi-retailer support
+  - Price history tracking
+  - Custom price alerts
+  - European price format handling
 - Monitoring Systems
-  - Content filtering
   - Automated notifications
   - Data validation
   - Task scheduling
+  - Event tracking
 
 ### Web Development
-[...existing Frontend Development section...]
+- Frontend Development
+  - HTML5/CSS3 design
+  - JavaScript integration
+  - Dynamic theming
+  - Responsive layouts
 - Backend Systems
   - Flask framework
-  - Routing and templates
   - Database integration
   - WebSocket support
   - Error handling
 
-### API Integration
+### API & Service Integration
 - External Services
   - Weather API integration
-  - Spotify music platform
+  - Spotify platform
   - News services
-  - User profiles
-- Implementation
   - OAuth authentication
+- Implementation
   - API key management
   - Rate limiting
   - Data caching
+  - Error handling
 
-### Automation & Email Systems
+### Automation Systems
 - Email Features
   - SMTP integration
   - HTML formatting
   - Scheduled delivery
   - Error handling
-- Content Management
-  - Quote randomization
-  - File reading/parsing
-  - Content formatting
-  - Text processing
-- Task Scheduling
-  - Time-based triggers
-  - Interval management
+- Task Management
+  - Scheduling system
   - Job queuing
-  - Task monitoring
+  - Process monitoring
+  - Event triggers
 
-### Tools and Applications
+### Development Tools
 - Utility Tools
   - Time/date handlers
   - Calculators
-  - Event systems
-  - Email automation
+  - Content formatters
 - Web Applications
   - Portfolio sites
   - Blog engines
@@ -210,6 +211,7 @@ This repository contains the daily challenges and projects completed as part of 
 | Day 97: Wikipedia Summarizer | Created a tool that scrapes Wikipedia articles and generates concise summaries using OpenAI API, including references management |
 | Day 98: Motivational Emailer | Built an automated email system that sends scheduled motivational quotes using Gmail SMTP, featuring quote randomization and HTML formatting. |
 | Day 99: Events Web Scraper | Created web scraper that monitors websites for events, stores them in a local database, and sends email notifications |
+| Day 100: Price Comparison Scraper | Built an automated price monitoring system that tracks products across multiple retailers, stores price history in a local database, and sends email alerts when prices drop below target. Features include European price format handling and retailer-specific selectors. |
 
 ## How to Run the Code
 
