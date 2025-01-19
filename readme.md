@@ -30,89 +30,68 @@ This repository contains the daily challenges and projects completed as part of 
   - Flask web framework
   - Dynamic content routing
 
-### Data Management
+### Data & Security Management
 - File Operations
-  - CSV and JSON handling
-  - Auto-save/load functionality
+  - CSV/JSON handling
+  - Auto-save functionality
   - Backup systems
-  - File organization
-- Database Systems
-  - Shelve and SQLite integration
+- Database Integration
+  - SQLite and Shelve
+  - Data structure optimization
   - Local storage solutions
-  - Data structures optimization
-- Security
+- Security Features
   - Password hashing/salting
   - User authentication
   - Session management
+  - Access control
+  - CORS configuration
 
 ### Web Development
-- Frontend
-  - HTML5/CSS3 responsive design
-  - JavaScript interactivity
+- Frontend Development
+  - HTML5/CSS3 design
+  - JavaScript integration
   - Dynamic theming
-  - Form validation
-- Backend
-  - Flask routing and templates
-  - Session handling
+  - Responsive layouts
+- Backend Systems
+  - Flask framework
+  - Routing and templates
   - Database integration
-  - WebSocket communication
-- Security
-  - Authentication systems
-  - CORS configuration
-  - Error handling
-  - Access control
+  - WebSocket support
 
-### API Integration and Language Processing
+### API Integration and Content Processing
 - External Services
-  - Random user profiles
-  - Weather data services
+  - Weather API integration
   - Spotify music platform
-  - NewsAPI integration
-- Implementation Features
-  - OAuth authentication
-  - Environment configuration
-  - API key management
-  - Rate limiting
-  - Data caching
-  - Response handling
-- News and Translation
-  - Multi-country source selection
-  - Cross-language translation
-  - Article filtering and pagination
-  - Regional news customization
+  - News services
+  - User profiles
+- Content Management
+  - Multi-language support
+  - Article summarization
+  - Text categorization
+  - Content extraction
 - AI Integration
   - OpenAI GPT models
   - Text summarization
   - Context-aware responses
-  - Character encoding handling
-- Data Processing
-  - JSON/Unicode handling
-  - Content extraction
-  - Error recovery
-  - Regional format adaptation
-- Music Integration
-  - Spotify API connection
-  - Track discovery
-  - Embedded players
-  - Cross-API recommendations
-  
+  - Language processing
+- Implementation
+  - OAuth authentication
+  - API key management
+  - Rate limiting
+  - Error handling
+  - Data caching
 
 ### Tools and Applications
-- Utility Applications
+- Utility Tools
   - Time/date handlers
-  - Event countdown
-  - Calculator
-  - Code library
+  - Calculators
+  - Event systems
+  - Code utilities
 - Web Applications
-  - Portfolio site
-  - Link tree
-  - Blog engine
-  - Weather dashboard
-- Social Features
-  - Chat system
-  - Twitter clone
-  - Private diary
-  - User profiles
+  - Portfolio sites
+  - Blog engines
+  - Weather dashboards
+  - Social features
 
 
 ## Challenges Completed
@@ -211,6 +190,8 @@ This repository contains the daily challenges and projects completed as part of 
 | Day 93: Music Time Machine | Spotify API integration to discover popular songs by year and country |
 | Day 94: News Summarizer | Built a command-line news aggregator that fetches top headlines using NewsAPI and generates summaries using OpenAI's GPT model. Features country selection, error handling, and formatted output. Added supporting multiple countries and languages, with AI-powered translation and summarization |
 | Day 95: Daily Track Generator | Created a music recommendation system that converts news headlines into song suggestions using NewsAPI, OpenAI for summarization, and Spotify API for track discovery. Features embedded players and cross-API integration |
+| Day 96: Tech News Scraper | Built a web scraper for Hacker News using BeautifulSoup. Features category filtering, content extraction, and AI-powered summarization |
+| Day 97: Wikipedia Summarizer | Created a tool that scrapes Wikipedia articles and generates concise summaries using OpenAI API, including references management |
 
 ## How to Run the Code
 
