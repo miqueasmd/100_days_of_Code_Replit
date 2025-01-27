@@ -1,6 +1,6 @@
 # 100 Days of Code Challenge
 
-This repository contains the daily challenges and projects completed as part of the 100 Days of Code challenge on Replit. Additional features and functionalities have been implemented, along with code adjustments to ensure local functionality.
+This repository contains the daily challenges and projects completed as part of the 100 Days of Code challenge by Replit. Additional features and functionalities have been implemented, along with code adjustments to ensure local functionality.
 
 ## Features
 
