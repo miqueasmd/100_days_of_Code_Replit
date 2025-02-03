@@ -305,7 +305,7 @@ If you like my work, consider supporting my studies!
 
 Your support will allow me to focus on my studies and work on new projects by covering educational tools and software licenses.
 
-Your contributions will help cover fees and materials for my **Computer Science and Engineering studies at UoPeople** starting in September 2025.
+Your contributions will help cover fees and materials for my **Computer Science and Engineering studies at the UOC** starting in September 2025.
 
 Every little bit helps—you can donate from as little as $1.
 
